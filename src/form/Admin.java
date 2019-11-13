@@ -5,6 +5,8 @@
  */
 package form;
 
+import java.awt.Font;
+
 /**
  *
  * @author NEVE
@@ -16,6 +18,8 @@ public class Admin extends javax.swing.JFrame {
      */
     public Admin() {
         initComponents();
+        dtDataLahir.setFormats("dd MMMM yyyy");
+        dtDataLahir.setFont(new Font("Tahoma", Font.PLAIN,14));
     }
     
     public void simpanData(){
@@ -31,30 +35,42 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel6 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDataNamaKaryawan = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtDataAlamat = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtDataHP = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbDataKelamin = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        dtDataLahir = new org.jdesktop.swingx.JXDatePicker();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        txtDataLahir = new javax.swing.JTextField();
+        btDataDelete = new javax.swing.JButton();
+        btDataAddNew = new javax.swing.JButton();
+        btDataSave = new javax.swing.JButton();
+        btDataEdit = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        txtGajiID = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        btDataAddNew1 = new javax.swing.JButton();
+        btDataSave1 = new javax.swing.JButton();
+        btDataEdit1 = new javax.swing.JButton();
+        btDataDelete1 = new javax.swing.JButton();
+        txtGajiJabatan = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtGajiTotal = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -62,6 +78,8 @@ public class Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
@@ -88,60 +106,69 @@ public class Admin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Nama");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 120, 30));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 140, 30));
+
+        txtDataNamaKaryawan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel2.add(txtDataNamaKaryawan, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 160, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Alamat");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 120, 30));
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 140, 30));
+
+        txtDataAlamat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel2.add(txtDataAlamat, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 160, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("No. Handphone");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 120, 30));
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, 140, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 120, 30));
+
+        txtDataHP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel2.add(txtDataHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 160, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Jenis Kelamin");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 120, 30));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 120, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Kelamin...", "Pria", "Wanita" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 140, 30));
+        cbDataKelamin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbDataKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Kelamin...", "Pria", "Wanita" }));
+        jPanel2.add(cbDataKelamin, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 160, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Tanggal Lahir");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 120, 30));
-        jPanel2.add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 140, 30));
+        jPanel2.add(dtDataLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 160, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Tempat Lahir");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 120, 30));
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 140, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 120, 30));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Delete");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtDataLahir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel2.add(txtDataLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 160, 30));
+
+        btDataDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDataDelete.setText("Delete");
+        btDataDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btDataDeleteActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 100, 40));
+        jPanel2.add(btDataDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 100, 40));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("Add New");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 100, 40));
+        btDataAddNew.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDataAddNew.setText("Add New");
+        jPanel2.add(btDataAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 100, 40));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setText("Save");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 100, 40));
+        btDataSave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDataSave.setText("Save");
+        jPanel2.add(btDataSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 100, 40));
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton4.setText("Edit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btDataEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDataEdit.setText("Edit");
+        btDataEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btDataEditActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 100, 40));
+        jPanel2.add(btDataEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 100, 40));
 
         jTabbedPane1.addTab("Data Karyawan", jPanel2);
 
@@ -160,7 +187,64 @@ public class Admin extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 875, 290));
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 875, 240));
+
+        txtGajiID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtGajiID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(txtGajiID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 140, 30));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("ID Gaji");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 140, 30));
+
+        btDataAddNew1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDataAddNew1.setText("Add New");
+        jPanel3.add(btDataAddNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 100, 40));
+
+        btDataSave1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDataSave1.setText("Save");
+        jPanel3.add(btDataSave1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 100, 40));
+
+        btDataEdit1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDataEdit1.setText("Edit");
+        btDataEdit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDataEdit1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btDataEdit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 100, 40));
+
+        btDataDelete1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btDataDelete1.setText("Delete");
+        btDataDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDataDelete1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btDataDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 100, 40));
+
+        txtGajiJabatan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtGajiJabatan.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel3.add(txtGajiJabatan, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 140, 30));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Jabatan");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 140, 30));
+
+        txtGajiTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtGajiTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jPanel3.add(txtGajiTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 100, 30));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Rp.");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 40, 30));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Total Gaji");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 140, 30));
 
         jTabbedPane1.addTab("Data Gaji", jPanel3);
 
@@ -186,18 +270,29 @@ public class Admin extends javax.swing.JFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jTabbedPane1.addTab("Laporan", jPanel5);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 560));
+        jPanel6.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 900, 560));
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 610));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btDataEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btDataEditActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btDataDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btDataDeleteActionPerformed
+
+    private void btDataEdit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataEdit1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btDataEdit1ActionPerformed
+
+    private void btDataDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataDelete1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btDataDelete1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,7 +305,7 @@ public class Admin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows Classic".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -235,22 +330,32 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btDataAddNew;
+    private javax.swing.JButton btDataAddNew1;
+    private javax.swing.JButton btDataDelete;
+    private javax.swing.JButton btDataDelete1;
+    private javax.swing.JButton btDataEdit;
+    private javax.swing.JButton btDataEdit1;
+    private javax.swing.JButton btDataSave;
+    private javax.swing.JButton btDataSave1;
+    private javax.swing.JComboBox<String> cbDataKelamin;
+    private org.jdesktop.swingx.JXDatePicker dtDataLahir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -258,10 +363,12 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private javax.swing.JTextField txtDataAlamat;
+    private javax.swing.JTextField txtDataHP;
+    private javax.swing.JTextField txtDataLahir;
+    private javax.swing.JTextField txtDataNamaKaryawan;
+    private javax.swing.JTextField txtGajiID;
+    private javax.swing.JTextField txtGajiJabatan;
+    private javax.swing.JTextField txtGajiTotal;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,11 +5,15 @@
  */
 package form;
 
+import configuration.classFunction;
 import configuration.classconnection;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,8 +25,16 @@ public class login extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
+    void logo_CV(){
+        ImageIcon myimg = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
+        Image img1 = myimg.getImage();
+        Image img2 = img1.getScaledInstance(logoCV.getWidth() - 15, logoCV.getHeight() - 70, Image.SCALE_SMOOTH);
+        ImageIcon i = new ImageIcon(img2);
+        logoCV.setIcon(i);
+    }
     public login() {
         initComponents();
+        logo_CV();
     }
 
     /**
@@ -41,15 +53,15 @@ public class login extends javax.swing.JFrame {
         txtPass = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        logoCV = new javax.swing.JLabel();
         ckShPass = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -77,21 +89,18 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 160, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Password");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 90, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 90, 30));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("LOGO");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 240, 220));
+        logoCV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logoCV.setText("LOGO");
+        jPanel1.add(logoCV, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 240, 220));
 
         ckShPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ckShPass.setForeground(new java.awt.Color(255, 255, 255));
         ckShPass.setText("Show Password");
         ckShPass.setOpaque(false);
         ckShPass.addItemListener(new java.awt.event.ItemListener() {
@@ -103,8 +112,13 @@ public class login extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 600, 340));
 
-        jPanel2.setBackground(new java.awt.Color(255, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("SELAMAT DATANG");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 4, 600, 50));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 60));
 
         pack();
@@ -112,25 +126,7 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        try {
-            Connection con = new classconnection().connection();
-            if (!txtUser.getText().equals("") && !txtPass.getText().equals("")) {
-                String sql = "select * from tb_login where username = '" + txtUser.getText() + "' and password = '" + txtPass.getText() + "'";
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                if (rs.next()) {
-                    JOptionPane.showMessageDialog(null, "Anda Berhasil Login");
-                    this.dispose();
-                    new Admin().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Data Login Tidak Ada");
-                    txtUser.setText("");
-                    txtPass.setText("");
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        classFunction.loginFunction(txtUser, txtPass);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void ckShPassItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckShPassItemStateChanged
@@ -186,9 +182,10 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckShPass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel logoCV;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

@@ -6,6 +6,9 @@
 package form;
 
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,8 +21,18 @@ public class Admin extends javax.swing.JFrame {
      */
     public Admin() {
         initComponents();
+        logo_.setText("");
+        logo_CV();
         dtDataLahir.setFormats("dd MMMM yyyy");
         dtDataLahir.setFont(new Font("Tahoma", Font.PLAIN,14));
+    }
+    
+    void logo_CV(){
+        ImageIcon myimg = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
+        Image img1 = myimg.getImage();
+        Image img2 = img1.getScaledInstance(logo_.getWidth() - 300, logo_.getHeight() - 70, Image.SCALE_SMOOTH);
+        ImageIcon i = new ImageIcon(img2);
+        logo_.setIcon(i);
     }
     
     public void simpanData(){
@@ -38,6 +51,8 @@ public class Admin extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        logo_ = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -57,24 +72,50 @@ public class Admin extends javax.swing.JFrame {
         btDataAddNew = new javax.swing.JButton();
         btDataSave = new javax.swing.JButton();
         btDataEdit = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        cbInputGajiID = new javax.swing.JComboBox<>();
+        txtInputNama = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        cbInputJabatan = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        cbInputBulan = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        cbInputTahun = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        txtInputTotal = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        btInputAddNew = new javax.swing.JButton();
+        btInputSave = new javax.swing.JButton();
+        btInputEdit = new javax.swing.JButton();
+        btInputDelete = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         txtGajiID = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        btDataAddNew1 = new javax.swing.JButton();
-        btDataSave1 = new javax.swing.JButton();
-        btDataEdit1 = new javax.swing.JButton();
-        btDataDelete1 = new javax.swing.JButton();
+        btGajiAddNew = new javax.swing.JButton();
+        btGajiSave = new javax.swing.JButton();
+        btGajiEdit = new javax.swing.JButton();
+        btGajiDelete = new javax.swing.JButton();
         txtGajiJabatan = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtGajiTotal = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        cbReportGajiID = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        cbReportBulan = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        txtReportNama = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        cbReportTahun = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,6 +125,17 @@ public class Admin extends javax.swing.JFrame {
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logo_.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        logo_.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo_.setText("LOGO");
+        jPanel1.add(logo_, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 890, 370));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("CV. MEGAH KARYA");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 890, 90));
+
         jTabbedPane1.addTab("Home", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,7 +222,98 @@ public class Admin extends javax.swing.JFrame {
         });
         jPanel2.add(btDataEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 100, 40));
 
-        jTabbedPane1.addTab("Data Karyawan", jPanel2);
+        jTabbedPane1.addTab("Data Pegawai", jPanel2);
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 875, 260));
+
+        cbInputGajiID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbInputGajiID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih ID Pegawai..." }));
+        jPanel4.add(cbInputGajiID, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 160, 30));
+
+        txtInputNama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel4.add(txtInputNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 160, 30));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setText("Nama Pegawai");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 120, 30));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setText("ID Pegawai");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 120, 30));
+
+        cbInputJabatan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbInputJabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Jabatan..." }));
+        jPanel4.add(cbInputJabatan, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 160, 30));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setText("Jabatan");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 120, 30));
+
+        cbInputBulan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbInputBulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Bulan...", "Januari", "Februari", "Maret", "April", "Maret", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        jPanel4.add(cbInputBulan, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 160, 30));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel14.setText("Bulan");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 120, 30));
+
+        cbInputTahun.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbInputTahun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Tahun...", "2018", "2019", "2020", "2021", "2022", "2023" }));
+        jPanel4.add(cbInputTahun, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 160, 30));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("Tahun");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 120, 30));
+
+        txtInputTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel4.add(txtInputTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 160, 30));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setText("Total Gaji");
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 120, 30));
+
+        btInputAddNew.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btInputAddNew.setText("Add New");
+        jPanel4.add(btInputAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 100, 40));
+
+        btInputSave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btInputSave.setText("Save");
+        jPanel4.add(btInputSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 100, 40));
+
+        btInputEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btInputEdit.setText("Edit");
+        btInputEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInputEditActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btInputEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 100, 40));
+
+        btInputDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btInputDelete.setText("Delete");
+        btInputDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInputDeleteActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btInputDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 100, 40));
+
+        jTabbedPane1.addTab("Input Penggajian", jPanel4);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -198,31 +341,31 @@ public class Admin extends javax.swing.JFrame {
         jLabel7.setText("ID Gaji");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 140, 30));
 
-        btDataAddNew1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btDataAddNew1.setText("Add New");
-        jPanel3.add(btDataAddNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 100, 40));
+        btGajiAddNew.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btGajiAddNew.setText("Add New");
+        jPanel3.add(btGajiAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 100, 40));
 
-        btDataSave1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btDataSave1.setText("Save");
-        jPanel3.add(btDataSave1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 100, 40));
+        btGajiSave.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btGajiSave.setText("Save");
+        jPanel3.add(btGajiSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 100, 40));
 
-        btDataEdit1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btDataEdit1.setText("Edit");
-        btDataEdit1.addActionListener(new java.awt.event.ActionListener() {
+        btGajiEdit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btGajiEdit.setText("Edit");
+        btGajiEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDataEdit1ActionPerformed(evt);
+                btGajiEditActionPerformed(evt);
             }
         });
-        jPanel3.add(btDataEdit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 100, 40));
+        jPanel3.add(btGajiEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 100, 40));
 
-        btDataDelete1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btDataDelete1.setText("Delete");
-        btDataDelete1.addActionListener(new java.awt.event.ActionListener() {
+        btGajiDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btGajiDelete.setText("Delete");
+        btGajiDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDataDelete1ActionPerformed(evt);
+                btGajiDeleteActionPerformed(evt);
             }
         });
-        jPanel3.add(btDataDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 100, 40));
+        jPanel3.add(btGajiDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 100, 40));
 
         txtGajiJabatan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtGajiJabatan.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -248,29 +391,55 @@ public class Admin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Data Gaji", jPanel3);
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 875, 260));
-
-        jTabbedPane1.addTab("Input Penggajian", jPanel4);
-
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel19.setText("ID Pegawai");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 120, 30));
+
+        cbReportGajiID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbReportGajiID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih ID Pegawai..." }));
+        jPanel5.add(cbReportGajiID, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 160, 30));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setText("Bulan");
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 120, 30));
+
+        cbReportBulan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbReportBulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Bulan...", "Januari", "Februari", "Maret", "April", "Maret", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        jPanel5.add(cbReportBulan, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 160, 30));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setText("Nama Pegawai");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 120, 30));
+
+        txtReportNama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel5.add(txtReportNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 160, 30));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel22.setText("Tahun");
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 120, 30));
+
+        cbReportTahun.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbReportTahun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Tahun...", "2018", "2019", "2020", "2021", "2022", "2023" }));
+        jPanel5.add(cbReportTahun, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 160, 30));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Cetak");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 180, 100, 40));
+
         jTabbedPane1.addTab("Laporan", jPanel5);
 
-        jPanel6.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 900, 560));
+        jPanel6.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 900, 550));
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel18.setText("Selamat Datang, Bambang!");
+        jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, 20));
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 610));
 
@@ -286,13 +455,25 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btDataDeleteActionPerformed
 
-    private void btDataEdit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataEdit1ActionPerformed
+    private void btGajiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btDataEdit1ActionPerformed
+    }//GEN-LAST:event_btGajiEditActionPerformed
 
-    private void btDataDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataDelete1ActionPerformed
+    private void btGajiDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btDataDelete1ActionPerformed
+    }//GEN-LAST:event_btGajiDeleteActionPerformed
+
+    private void btInputEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btInputEditActionPerformed
+
+    private void btInputDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btInputDeleteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,18 +512,42 @@ public class Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btDataAddNew;
-    private javax.swing.JButton btDataAddNew1;
     private javax.swing.JButton btDataDelete;
-    private javax.swing.JButton btDataDelete1;
     private javax.swing.JButton btDataEdit;
-    private javax.swing.JButton btDataEdit1;
     private javax.swing.JButton btDataSave;
-    private javax.swing.JButton btDataSave1;
+    private javax.swing.JButton btGajiAddNew;
+    private javax.swing.JButton btGajiDelete;
+    private javax.swing.JButton btGajiEdit;
+    private javax.swing.JButton btGajiSave;
+    private javax.swing.JButton btInputAddNew;
+    private javax.swing.JButton btInputDelete;
+    private javax.swing.JButton btInputEdit;
+    private javax.swing.JButton btInputSave;
     private javax.swing.JComboBox<String> cbDataKelamin;
+    private javax.swing.JComboBox<String> cbInputBulan;
+    private javax.swing.JComboBox<String> cbInputGajiID;
+    private javax.swing.JComboBox<String> cbInputJabatan;
+    private javax.swing.JComboBox<String> cbInputTahun;
+    private javax.swing.JComboBox<String> cbReportBulan;
+    private javax.swing.JComboBox<String> cbReportGajiID;
+    private javax.swing.JComboBox<String> cbReportTahun;
     private org.jdesktop.swingx.JXDatePicker dtDataLahir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -363,6 +568,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JLabel logo_;
     private javax.swing.JTextField txtDataAlamat;
     private javax.swing.JTextField txtDataHP;
     private javax.swing.JTextField txtDataLahir;
@@ -370,5 +576,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField txtGajiID;
     private javax.swing.JTextField txtGajiJabatan;
     private javax.swing.JTextField txtGajiTotal;
+    private javax.swing.JTextField txtInputNama;
+    private javax.swing.JTextField txtInputTotal;
+    private javax.swing.JTextField txtReportNama;
     // End of variables declaration//GEN-END:variables
 }

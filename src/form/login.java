@@ -9,10 +9,7 @@ import configuration.classFunction;
 import configuration.classconnection;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -21,10 +18,7 @@ import javax.swing.JOptionPane;
  * @author NEVE
  */
 public class login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form login
-     */
+    
     void logo_CV(){
         ImageIcon myimg = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
         Image img1 = myimg.getImage();
@@ -32,8 +26,10 @@ public class login extends javax.swing.JFrame {
         ImageIcon i = new ImageIcon(img2);
         logoCV.setIcon(i);
     }
+    
     public login() {
         initComponents();
+        lbNamaAdmin.setVisible(false);
         logo_CV();
     }
 
@@ -57,6 +53,7 @@ public class login extends javax.swing.JFrame {
         ckShPass = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        lbNamaAdmin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -83,9 +80,19 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 80, 30));
 
         txtUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUserKeyPressed(evt);
+            }
+        });
         jPanel1.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 160, 30));
 
         txtPass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
+            }
+        });
         jPanel1.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 160, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -119,6 +126,9 @@ public class login extends javax.swing.JFrame {
         jLabel4.setText("SELAMAT DATANG");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 4, 600, 50));
 
+        lbNamaAdmin.setText("jLabel3");
+        jPanel2.add(lbNamaAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 60));
 
         pack();
@@ -126,7 +136,16 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        classFunction.loginFunction(txtUser, txtPass);
+        if (txtUser.getText().equals("") || txtPass.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Isi Data Login Anda!", "Kesalahan", JOptionPane.WARNING_MESSAGE);
+        }else if(txtUser.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Isi Username Anda!", "Kesalahan", JOptionPane.WARNING_MESSAGE);
+        }else if(txtPass.getText().equals("") ){
+            JOptionPane.showMessageDialog(this, "Isi Password Anda!", "Kesalahan", JOptionPane.WARNING_MESSAGE);
+        }else{
+            classFunction.getAdminName(txtUser, txtPass, lbNamaAdmin);
+            classFunction.loginFunction(txtUser, txtPass, this, new Admin(lbNamaAdmin.getText()));
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void ckShPassItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckShPassItemStateChanged
@@ -140,6 +159,20 @@ public class login extends javax.swing.JFrame {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            classFunction.getAdminName(txtUser, txtPass, lbNamaAdmin);
+            classFunction.loginFunction(txtUser, txtPass, this, new Admin(lbNamaAdmin.getText()));
+        }
+    }//GEN-LAST:event_txtPassKeyPressed
+
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            classFunction.getAdminName(txtUser, txtPass, lbNamaAdmin);
+            classFunction.loginFunction(txtUser, txtPass, this, new Admin(lbNamaAdmin.getText()));
+        }
+    }//GEN-LAST:event_txtUserKeyPressed
 
     /**
      * @param args the command line arguments
@@ -185,6 +218,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbNamaAdmin;
     private javax.swing.JLabel logoCV;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;

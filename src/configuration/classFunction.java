@@ -1,6 +1,7 @@
 package configuration;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -404,6 +405,7 @@ public class classFunction {
             System.out.println(qq);
         }
     }
+
 //Isi Combo//
     public static void comboJabatan(JComboBox cb) {
         try {
@@ -431,6 +433,89 @@ public class classFunction {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
+            System.out.println(e);
+        }
+    }
+    
+//Control Form (Edit)//
+    
+    public static void editDataPegawai(JTextField a, JComboBox b, JTextField c, JTextField d, JXDatePicker e, JTextField f, JLabel g){
+        try {
+            String sql = "update tb_karyawan set nama_karyawan = ?, jenis_kelamin = ?, alamat = ?, "
+                    + "tempat_lahir = ?, tanggal_lahir = ?, no_hp = ? where id_karyawan = ? ";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, a.getText());
+            pst.setString(2, b.getSelectedItem().toString());
+            pst.setString(3, c.getText());
+            pst.setString(4, d.getText());
+            pst.setString(5, new SimpleDateFormat("yyyy-MM-dd").format(e.getDate()));
+            pst.setString(6, f.getText());
+            pst.setString(7, g.getText());            
+            pst.executeUpdate();
+        } catch (SQLException h) {
+            System.out.println(h);
+        }
+    }
+    
+    public static void editDataPenggajian(JComboBox a, JTextField b, JComboBox c, JTextField d, JComboBox e, JComboBox f, JLabel g){
+        try {
+            String sql = "update tb_penggajian set id_karyawan = ?, nama_karyawan = ?, jabatan = ?, "
+                    + "total_gaji = ?, bulan_gaji = ?, tahun_gaji = ? where id_penggajian = ? ";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, a.getSelectedItem().toString());
+            pst.setString(2, b.getText());
+            pst.setString(3, c.getSelectedItem().toString());
+            pst.setString(4, d.getText());
+            pst.setString(5, e.getSelectedItem().toString());
+            pst.setString(6, f.getSelectedItem().toString());
+            pst.setString(7, g.getText());            
+            pst.executeUpdate();
+        } catch (SQLException h) {
+            System.out.println(h);
+        }
+    }
+    
+    public static void editDataGaji(JTextField a, JTextField b, JTextField c){
+        try {
+            String sql = "update tb_gaji set jabatan = ?, total_gaji = ? where id_gaji = ? ";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, a.getText());
+            pst.setString(2, b.getText());
+            pst.setString(3, c.getText());
+            pst.executeUpdate();
+        } catch (SQLException h) {
+            System.out.println(h);
+        }
+    }
+    
+//Control Form (Delete)//
+    
+    public static void deleteDataPegawai(JLabel a){
+        try {
+            String sql = "delete from tb_karyawan where id_karyawan = '" + a.getText() + "'";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.execute();            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void deleteDataPenggajian(JLabel a){
+        try {
+            String sql = "delete from tb_penggajian where id_penggajian = '" + a.getText() + "'";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.execute();            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void deleteDataGaji(JTextField a){
+        try {
+            String sql = "delete from tb_gaji where idgaji = '" + a.getText() + "'";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.execute();            
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }

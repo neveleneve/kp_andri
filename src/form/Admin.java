@@ -51,8 +51,15 @@ public class Admin extends javax.swing.JFrame {
         classFunction.comboIDPegawai(cbInputGajiID);
         classFunction.comboIDPegawai(cbReportIDKaryawan);
         //--------------------------------------------------------//
-        lbInputIdPenggajian.setVisible(false);
-        lbDataNewIDPegawai.setVisible(false);
+//        lbInputIdPenggajian.setVisible(false);
+//        lbDataNewIDPegawai.setVisible(false);
+        //--------------------------------------------------------//
+        btDataDelete.setEnabled(false);
+        btDataEdit.setEnabled(false);
+        btInputDelete.setEnabled(false);
+        btInputEdit.setEnabled(false);
+        btGajiDelete.setEnabled(false);
+        btGajiEdit.setEnabled(false);
     }
 
     void logo_CV() {
@@ -550,27 +557,123 @@ public class Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btDataEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataEditActionPerformed
-        // TODO add your handling code here:
+        if (txtDataNamaKaryawan.getText().equals("") || txtDataAlamat.getText().equals("") || txtDataLahir.getText().equals("") || txtDataHP.getText().equals("") || dtDataLahir.getDate().equals(new Date()) || cbDataKelamin.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Edit Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int abcd = JOptionPane.showConfirmDialog(null, "Edit Pegawai Dengan ID " + lbDataNewIDPegawai.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (abcd == JOptionPane.YES_OPTION) {
+                classFunction.editDataPegawai(txtDataNamaKaryawan, cbDataKelamin, txtDataAlamat, txtDataLahir, dtDataLahir, txtDataHP, lbDataNewIDPegawai);
+                classFunction.tampilDataPegawai(tb_pegawai);
+                classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin);
+                classFunction.idPegawaiBaru(lbDataNewIDPegawai);
+                btDataSave.setEnabled(true);
+                btDataEdit.setEnabled(false);
+                btDataDelete.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Edit Data Pegawai Berhasil", "Berhasil!", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+
+            }
+        }
     }//GEN-LAST:event_btDataEditActionPerformed
 
     private void btDataDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataDeleteActionPerformed
-        // TODO add your handling code here:
+        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Hapus Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int abcd = JOptionPane.showConfirmDialog(null, "Hapus Data Penggajian Dengan ID " + lbInputIdPenggajian.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (abcd == JOptionPane.YES_OPTION) {
+                classFunction.deleteDataPegawai(lbDataNewIDPegawai);
+                classFunction.tampilDataPegawai(tb_pegawai);
+                classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin);
+                classFunction.idPegawaiBaru(lbDataNewIDPegawai);
+                btDataSave.setEnabled(true);
+                btDataEdit.setEnabled(false);
+                btDataDelete.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Hapus Penggajian Berhasil", "Berhasil!", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+
+            }
+        }
     }//GEN-LAST:event_btDataDeleteActionPerformed
 
     private void btGajiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiEditActionPerformed
-        // TODO add your handling code here:
+        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Edit Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int abcd = JOptionPane.showConfirmDialog(null, "Edit Data Gaji Dengan ID " + txtGajiID.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (abcd == JOptionPane.YES_OPTION) {
+                classFunction.editDataGaji(txtGajiJabatan, txtGajiTotal, txtGajiID);
+                classFunction.tampilDataGaji(tb_gaji);
+                classFunction.clearGaji(txtGajiID, txtGajiJabatan, txtGajiTotal);
+                classFunction.idGajiBaru(txtGajiID);
+                btGajiSave.setEnabled(true);
+                btGajiEdit.setEnabled(false);
+                btGajiDelete.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Edit Data Gaji Berhasil", "Berhasil!", JOptionPane.WARNING_MESSAGE);
+            } else {
+
+            }
+        }
     }//GEN-LAST:event_btGajiEditActionPerformed
 
     private void btGajiDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiDeleteActionPerformed
-        // TODO add your handling code here:
+        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Delete Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int abcd = JOptionPane.showConfirmDialog(null, "Delete Data Gaji Dengan ID " + txtGajiID.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (abcd == JOptionPane.YES_OPTION) {
+                classFunction.deleteDataGaji(txtGajiID);
+                classFunction.tampilDataGaji(tb_gaji);
+                classFunction.clearGaji(txtGajiID, txtGajiJabatan, txtGajiTotal);
+                classFunction.idGajiBaru(txtGajiID);
+                btGajiSave.setEnabled(true);
+                btGajiEdit.setEnabled(false);
+                btGajiDelete.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Delete Data Gaji Berhasil", "Berhasil!", JOptionPane.WARNING_MESSAGE);
+            } else {
+
+            }
+        }
     }//GEN-LAST:event_btGajiDeleteActionPerformed
 
     private void btInputEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputEditActionPerformed
-        // TODO add your handling code here:
+        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Edit Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int abcd = JOptionPane.showConfirmDialog(null, "Edit Data Penggajian Dengan ID " + lbInputIdPenggajian.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (abcd == JOptionPane.YES_OPTION) {
+                classFunction.editDataPenggajian(cbInputGajiID, txtInputNama, cbInputJabatan, txtInputTotal, cbInputBulan, cbInputTahun, lbInputIdPenggajian);
+                classFunction.tampilDataPenggajian(tb_penggajian);
+                classFunction.clearInput(cbInputBulan, cbInputGajiID, cbInputJabatan, cbInputTahun, txtInputNama, txtInputTotal);
+                classFunction.idPenggajianBaru(lbInputIdPenggajian);
+                btInputSave.setEnabled(true);
+                btInputEdit.setEnabled(false);
+                btInputDelete.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Edit Penggajian Berhasil", "Berhasil!", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+
+            }
+        }
     }//GEN-LAST:event_btInputEditActionPerformed
 
     private void btInputDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputDeleteActionPerformed
-        // TODO add your handling code here:
+        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Edit Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int abcd = JOptionPane.showConfirmDialog(null, "Edit Data Penggajian Dengan ID " + lbInputIdPenggajian.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (abcd == JOptionPane.YES_OPTION) {
+                classFunction.deleteDataPenggajian(lbInputIdPenggajian);
+                classFunction.tampilDataPenggajian(tb_penggajian);
+                classFunction.clearInput(cbInputBulan, cbInputGajiID, cbInputJabatan, cbInputTahun, txtInputNama, txtInputTotal);
+                classFunction.idPenggajianBaru(lbInputIdPenggajian);
+                btInputSave.setEnabled(true);
+                btInputEdit.setEnabled(false);
+                btInputDelete.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Edit Penggajian Berhasil", "Berhasil!", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+
+            }
+        }
     }//GEN-LAST:event_btInputDeleteActionPerformed
 
     private void btReportCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReportCetakActionPerformed
@@ -583,19 +686,26 @@ public class Admin extends javax.swing.JFrame {
 
     private void btDataAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataAddNewActionPerformed
         classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin);
+        classFunction.idPegawaiBaru(lbDataNewIDPegawai);
         btDataSave.setEnabled(true);
+        btDataEdit.setEnabled(false);
+        btDataDelete.setEnabled(false);
     }//GEN-LAST:event_btDataAddNewActionPerformed
 
     private void btInputAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInputAddNewActionPerformed
         classFunction.clearInput(cbInputBulan, cbInputGajiID, cbInputJabatan, cbInputTahun, txtInputNama, txtInputTotal);
         classFunction.idPenggajianBaru(lbInputIdPenggajian);
         btInputSave.setEnabled(true);
+        btInputEdit.setEnabled(false);
+        btInputDelete.setEnabled(false);
     }//GEN-LAST:event_btInputAddNewActionPerformed
 
     private void btGajiAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiAddNewActionPerformed
         classFunction.clearGaji(txtGajiID, txtGajiJabatan, txtGajiTotal);
         classFunction.idGajiBaru(txtGajiID);
         btGajiSave.setEnabled(true);
+        btGajiEdit.setEnabled(false);
+        btGajiDelete.setEnabled(false);
     }//GEN-LAST:event_btGajiAddNewActionPerformed
 
     private void btDataSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataSaveActionPerformed
@@ -633,27 +743,27 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btInputSaveActionPerformed
 
     private void cbInputGajiIDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbInputGajiIDItemStateChanged
-        if(cbInputGajiID.getSelectedIndex()==0){
+        if (cbInputGajiID.getSelectedIndex() == 0) {
             txtInputNama.setText("");
-        }else{
+        } else {
             classFunction.idSelected(cbInputGajiID, txtInputNama);
-        }        
+        }
     }//GEN-LAST:event_cbInputGajiIDItemStateChanged
 
     private void cbReportIDKaryawanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbReportIDKaryawanItemStateChanged
-        if(cbReportIDKaryawan.getSelectedIndex()==0){
+        if (cbReportIDKaryawan.getSelectedIndex() == 0) {
             txtReportNama.setText("");
-        }else{
+        } else {
             classFunction.idSelected(cbReportIDKaryawan, txtReportNama);
-        }        
+        }
     }//GEN-LAST:event_cbReportIDKaryawanItemStateChanged
 
     private void cbInputJabatanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbInputJabatanItemStateChanged
-         if(cbInputJabatan.getSelectedIndex()==0){
+        if (cbInputJabatan.getSelectedIndex() == 0) {
             txtInputTotal.setText("");
-        }else{
+        } else {
             classFunction.jabatanSelected(cbInputJabatan, txtInputTotal);
-        }        
+        }
     }//GEN-LAST:event_cbInputJabatanItemStateChanged
 
     private void btGajiSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiSaveActionPerformed
@@ -677,7 +787,7 @@ public class Admin extends javax.swing.JFrame {
         int s = tb_pegawai.getSelectedRow();
         Date d = null;
         Locale id = new Locale("in", "ID");
-        try {            
+        try {
             d = new SimpleDateFormat("dd MMMM yyyy", id).parse(tb_pegawai.getValueAt(s, 5).toString());
             dtDataLahir.setDate(d);
         } catch (ParseException ex) {
@@ -690,25 +800,32 @@ public class Admin extends javax.swing.JFrame {
         txtDataLahir.setText(tb_pegawai.getValueAt(s, 4).toString());
         txtDataHP.setText(tb_pegawai.getValueAt(s, 6).toString());
         btDataSave.setEnabled(false);
+        btDataDelete.setEnabled(true);
+        btDataEdit.setEnabled(true);
     }//GEN-LAST:event_tb_pegawaiMouseClicked
 
     private void tb_penggajianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_penggajianMouseClicked
         int s = tb_penggajian.getSelectedRow();
+
         lbInputIdPenggajian.setText(tb_penggajian.getValueAt(s, 0).toString());
         cbInputGajiID.setSelectedItem(tb_penggajian.getValueAt(s, 1).toString());
         cbInputJabatan.setSelectedItem(tb_penggajian.getValueAt(s, 3).toString());
         cbInputBulan.setSelectedItem(tb_penggajian.getValueAt(s, 5).toString());
-        cbInputTahun.setSelectedItem(tb_penggajian.getValueAt(s, 6).toString());        
+        cbInputTahun.setSelectedItem(tb_penggajian.getValueAt(s, 6).toString());
         btInputSave.setEnabled(false);
+        btInputEdit.setEnabled(true);
+        btInputDelete.setEnabled(true);
     }//GEN-LAST:event_tb_penggajianMouseClicked
 
     private void tb_gajiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_gajiMouseClicked
         int s = tb_gaji.getSelectedRow();
-        
+
         txtGajiID.setText(tb_gaji.getValueAt(s, 0).toString());
         txtGajiJabatan.setText(tb_gaji.getValueAt(s, 1).toString());
         txtGajiTotal.setText(tb_gaji.getValueAt(s, 2).toString().replace("Rp. ", "").replace(".", "").replace(",", ""));
         btGajiSave.setEnabled(false);
+        btGajiEdit.setEnabled(true);
+        btGajiDelete.setEnabled(true);
     }//GEN-LAST:event_tb_gajiMouseClicked
 
     /**

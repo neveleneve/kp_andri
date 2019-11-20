@@ -51,8 +51,12 @@ public class Admin extends javax.swing.JFrame {
         classFunction.comboIDPegawai(cbInputGajiID);
         classFunction.comboIDPegawai(cbReportIDKaryawan);
         //--------------------------------------------------------//
-//        lbInputIdPenggajian.setVisible(false);
-//        lbDataNewIDPegawai.setVisible(false);
+        txtReportNama.setEnabled(false);
+        cbReportIDKaryawan.setEnabled(false);
+        cbReportBulan.setEnabled(false);
+        cbReportTahun.setEnabled(false);
+        lbInputIdPenggajian.setVisible(false);
+        lbDataNewIDPegawai.setVisible(false);
         //--------------------------------------------------------//
         btDataDelete.setEnabled(false);
         btDataEdit.setEnabled(false);
@@ -149,9 +153,13 @@ public class Admin extends javax.swing.JFrame {
         cbReportTahun = new javax.swing.JComboBox<>();
         btReportCetak = new javax.swing.JButton();
         btReportAddNew = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        cbReportSelect = new javax.swing.JComboBox<>();
         lbWelcome = new javax.swing.JLabel();
+        lbLogOut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -489,8 +497,8 @@ public class Admin extends javax.swing.JFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel19.setText("ID Pegawai");
-        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 120, 30));
+        jLabel19.setText("Jenis Laporan");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 120, 30));
 
         cbReportIDKaryawan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbReportIDKaryawan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih ID Pegawai..." }));
@@ -499,30 +507,30 @@ public class Admin extends javax.swing.JFrame {
                 cbReportIDKaryawanItemStateChanged(evt);
             }
         });
-        jPanel5.add(cbReportIDKaryawan, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 160, 30));
+        jPanel5.add(cbReportIDKaryawan, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 160, 30));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel20.setText("Bulan");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 120, 30));
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 120, 30));
 
         cbReportBulan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbReportBulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Bulan...", "Januari", "Februari", "Maret", "April", "Maret", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
-        jPanel5.add(cbReportBulan, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 160, 30));
+        jPanel5.add(cbReportBulan, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 160, 30));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel21.setText("Nama Pegawai");
-        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 120, 30));
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 120, 30));
 
         txtReportNama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel5.add(txtReportNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 160, 30));
+        jPanel5.add(txtReportNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 160, 30));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel22.setText("Tahun");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 120, 30));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 120, 30));
 
         cbReportTahun.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbReportTahun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Tahun...", "2018", "2019", "2020", "2021", "2022", "2023" }));
-        jPanel5.add(cbReportTahun, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 160, 30));
+        jPanel5.add(cbReportTahun, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 160, 30));
 
         btReportCetak.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btReportCetak.setText("Cetak");
@@ -531,7 +539,7 @@ public class Admin extends javax.swing.JFrame {
                 btReportCetakActionPerformed(evt);
             }
         });
-        jPanel5.add(btReportCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 170, 100, 40));
+        jPanel5.add(btReportCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 100, 40));
 
         btReportAddNew.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btReportAddNew.setText("Add New");
@@ -540,7 +548,20 @@ public class Admin extends javax.swing.JFrame {
                 btReportAddNewActionPerformed(evt);
             }
         });
-        jPanel5.add(btReportAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 100, 40));
+        jPanel5.add(btReportAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 100, 40));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel24.setText("ID Pegawai");
+        jPanel5.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 120, 30));
+
+        cbReportSelect.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbReportSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Jenis Laporan...", "Slip Gaji", "Laporan Bulanan" }));
+        cbReportSelect.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbReportSelectItemStateChanged(evt);
+            }
+        });
+        jPanel5.add(cbReportSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 160, 30));
 
         jTabbedPane1.addTab("Laporan", jPanel5);
 
@@ -549,6 +570,18 @@ public class Admin extends javax.swing.JFrame {
         lbWelcome.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbWelcome.setText("Selamat Datang, Bambang!");
         jPanel6.add(lbWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, 20));
+
+        lbLogOut.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lbLogOut.setForeground(new java.awt.Color(51, 51, 255));
+        lbLogOut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbLogOut.setText("Log Out");
+        lbLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbLogOutMouseClicked(evt);
+            }
+        });
+        jPanel6.add(lbLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 100, 30));
 
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 610));
 
@@ -677,11 +710,31 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btInputDeleteActionPerformed
 
     private void btReportCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReportCetakActionPerformed
-        // TODO add your handling code here:
+        switch (cbReportSelect.getSelectedIndex()) {
+            case 0:
+                JOptionPane.showMessageDialog(this, "Silahkan Pilih Jenis Laporan Yang Akan Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                break;
+            case 1:
+                if (cbReportIDKaryawan.getSelectedIndex() == 0 || cbReportBulan.getSelectedIndex() == 0 || cbReportTahun.getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(this, "Silahkan Pilih Data Pegawai Untuk Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    classFunction.reportingSlip(cbReportIDKaryawan, cbReportBulan, cbReportTahun);
+                }
+                break;
+            case 2:
+                String bulanan = cbReportBulan.getSelectedItem().toString() + " " + cbReportTahun.getSelectedItem().toString();
+                if (cbReportBulan.getSelectedIndex() == 0 || cbReportTahun.getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(this, "Silahkan Pilih Data Laporan Yang Akan Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    classFunction.reportingBulanan(cbReportBulan, cbReportTahun, bulanan);
+                }
+        }
+
+
     }//GEN-LAST:event_btReportCetakActionPerformed
 
     private void btReportAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReportAddNewActionPerformed
-        classFunction.clearReport(cbReportBulan, cbReportIDKaryawan, cbReportTahun, txtReportNama);
+        classFunction.clearReport(cbReportBulan, cbReportIDKaryawan, cbReportTahun, txtReportNama, cbReportSelect);
     }//GEN-LAST:event_btReportAddNewActionPerformed
 
     private void btDataAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataAddNewActionPerformed
@@ -746,7 +799,7 @@ public class Admin extends javax.swing.JFrame {
         if (cbInputGajiID.getSelectedIndex() == 0) {
             txtInputNama.setText("");
         } else {
-            classFunction.idSelected(cbInputGajiID, txtInputNama);
+            classFunction.comboSelected(cbInputGajiID, txtInputNama, "nama_karyawan", "tb_karyawan", "id_karyawan");
         }
     }//GEN-LAST:event_cbInputGajiIDItemStateChanged
 
@@ -754,7 +807,7 @@ public class Admin extends javax.swing.JFrame {
         if (cbReportIDKaryawan.getSelectedIndex() == 0) {
             txtReportNama.setText("");
         } else {
-            classFunction.idSelected(cbReportIDKaryawan, txtReportNama);
+            classFunction.comboSelected(cbReportIDKaryawan, txtReportNama, "nama_karyawan", "tb_karyawan", "id_karyawan");
         }
     }//GEN-LAST:event_cbReportIDKaryawanItemStateChanged
 
@@ -762,7 +815,7 @@ public class Admin extends javax.swing.JFrame {
         if (cbInputJabatan.getSelectedIndex() == 0) {
             txtInputTotal.setText("");
         } else {
-            classFunction.jabatanSelected(cbInputJabatan, txtInputTotal);
+            classFunction.comboSelected(cbInputJabatan, txtInputTotal, "total_gaji", "tb_gaji", "jabatan");
         }
     }//GEN-LAST:event_cbInputJabatanItemStateChanged
 
@@ -828,6 +881,39 @@ public class Admin extends javax.swing.JFrame {
         btGajiDelete.setEnabled(true);
     }//GEN-LAST:event_tb_gajiMouseClicked
 
+    private void cbReportSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbReportSelectItemStateChanged
+        switch (cbReportSelect.getSelectedIndex()) {
+            case 0:
+                cbReportIDKaryawan.setEnabled(false);
+                cbReportBulan.setEnabled(false);
+                cbReportTahun.setEnabled(false);
+                txtReportNama.setEnabled(false);
+                break;
+            case 1:
+                cbReportIDKaryawan.setEnabled(true);
+                cbReportBulan.setEnabled(true);
+                cbReportTahun.setEnabled(true);
+                txtReportNama.setEnabled(true);
+                break;
+            case 2:
+                cbReportIDKaryawan.setEnabled(false);
+                cbReportBulan.setEnabled(true);
+                cbReportTahun.setEnabled(true);
+                txtReportNama.setEnabled(false);
+                break;
+        }
+    }//GEN-LAST:event_cbReportSelectItemStateChanged
+
+    private void lbLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbLogOutMouseClicked
+        int abcd = JOptionPane.showConfirmDialog(null, "Anda Akan Log Out. Lanjutkan ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        if (abcd == JOptionPane.YES_OPTION) {
+            this.dispose();
+            new login().setVisible(true);
+        } else {
+
+        }
+    }//GEN-LAST:event_lbLogOutMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -885,6 +971,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbInputTahun;
     private javax.swing.JComboBox<String> cbReportBulan;
     private javax.swing.JComboBox<String> cbReportIDKaryawan;
+    private javax.swing.JComboBox<String> cbReportSelect;
     private javax.swing.JComboBox<String> cbReportTahun;
     private org.jdesktop.swingx.JXDatePicker dtDataLahir;
     private javax.swing.JLabel jLabel1;
@@ -901,6 +988,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -920,6 +1008,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbDataNewIDPegawai;
     private javax.swing.JLabel lbInputIdPenggajian;
+    private javax.swing.JLabel lbLogOut;
     private javax.swing.JLabel lbWelcome;
     private javax.swing.JLabel logo_;
     private javax.swing.JTable tb_gaji;

@@ -1,15 +1,17 @@
 package configuration;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,6 +22,15 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.JXDatePicker;
 
 public class classFunction {
@@ -338,7 +349,8 @@ public class classFunction {
         c.setText("");
     }
 
-    public static void clearReport(JComboBox a, JComboBox b, JComboBox c, JTextField d) {
+    public static void clearReport(JComboBox a, JComboBox b, JComboBox c, JTextField d, JComboBox e) {
+        e.setSelectedIndex(0);
         a.setSelectedIndex(0);
         b.setSelectedIndex(0);
         c.setSelectedIndex(0);
@@ -389,14 +401,14 @@ public class classFunction {
         }
     }
 
-    public static void insertDataGaji(JTextField a, JTextField b, JTextField c){
+    public static void insertDataGaji(JTextField a, JTextField b, JTextField c) {
         try {
             SQL = "insert into tb_gaji values(?,?,?)";
             java.sql.PreparedStatement stmt = con.prepareStatement(SQL);
             try {
                 stmt.setString(1, a.getText());
                 stmt.setString(2, b.getText());
-                stmt.setString(3, c.getText());                
+                stmt.setString(3, c.getText());
                 stmt.executeUpdate();
             } catch (SQLException qq) {
                 System.out.println(qq);
@@ -436,10 +448,9 @@ public class classFunction {
             System.out.println(e);
         }
     }
-    
+
 //Control Form (Edit)//
-    
-    public static void editDataPegawai(JTextField a, JComboBox b, JTextField c, JTextField d, JXDatePicker e, JTextField f, JLabel g){
+    public static void editDataPegawai(JTextField a, JComboBox b, JTextField c, JTextField d, JXDatePicker e, JTextField f, JLabel g) {
         try {
             String sql = "update tb_karyawan set nama_karyawan = ?, jenis_kelamin = ?, alamat = ?, "
                     + "tempat_lahir = ?, tanggal_lahir = ?, no_hp = ? where id_karyawan = ? ";
@@ -450,14 +461,14 @@ public class classFunction {
             pst.setString(4, d.getText());
             pst.setString(5, new SimpleDateFormat("yyyy-MM-dd").format(e.getDate()));
             pst.setString(6, f.getText());
-            pst.setString(7, g.getText());            
+            pst.setString(7, g.getText());
             pst.executeUpdate();
         } catch (SQLException h) {
             System.out.println(h);
         }
     }
-    
-    public static void editDataPenggajian(JComboBox a, JTextField b, JComboBox c, JTextField d, JComboBox e, JComboBox f, JLabel g){
+
+    public static void editDataPenggajian(JComboBox a, JTextField b, JComboBox c, JTextField d, JComboBox e, JComboBox f, JLabel g) {
         try {
             String sql = "update tb_penggajian set id_karyawan = ?, nama_karyawan = ?, jabatan = ?, "
                     + "total_gaji = ?, bulan_gaji = ?, tahun_gaji = ? where id_penggajian = ? ";
@@ -468,14 +479,14 @@ public class classFunction {
             pst.setString(4, d.getText());
             pst.setString(5, e.getSelectedItem().toString());
             pst.setString(6, f.getSelectedItem().toString());
-            pst.setString(7, g.getText());            
+            pst.setString(7, g.getText());
             pst.executeUpdate();
         } catch (SQLException h) {
             System.out.println(h);
         }
     }
-    
-    public static void editDataGaji(JTextField a, JTextField b, JTextField c){
+
+    public static void editDataGaji(JTextField a, JTextField b, JTextField c) {
         try {
             String sql = "update tb_gaji set jabatan = ?, total_gaji = ? where id_gaji = ? ";
             PreparedStatement pst = con.prepareStatement(sql);
@@ -487,62 +498,95 @@ public class classFunction {
             System.out.println(h);
         }
     }
-    
+
 //Control Form (Delete)//
-    
-    public static void deleteDataPegawai(JLabel a){
+    public static void deleteDataPegawai(JLabel a) {
         try {
             String sql = "delete from tb_karyawan where id_karyawan = '" + a.getText() + "'";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.execute();            
+            pst.execute();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
-    public static void deleteDataPenggajian(JLabel a){
+
+    public static void deleteDataPenggajian(JLabel a) {
         try {
             String sql = "delete from tb_penggajian where id_penggajian = '" + a.getText() + "'";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.execute();            
+            pst.execute();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
-    public static void deleteDataGaji(JTextField a){
+
+    public static void deleteDataGaji(JTextField a) {
         try {
             String sql = "delete from tb_gaji where idgaji = '" + a.getText() + "'";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.execute();            
+            pst.execute();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
+
 //Combo Change//
-    public static void idSelected(JComboBox a, JTextField b) {
+    public static void comboSelected(JComboBox a, JTextField b, String c, String d, String e) {
         try {
             SQL = "select nama_karyawan as jj from tb_karyawan where id_karyawan = '" + a.getSelectedItem().toString() + "'";
+            SQL = "select " + c + " as jj from " + d + " where " + e + " = '" + a.getSelectedItem().toString() + "'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(SQL);
-            while(rs.next()){
+            while (rs.next()) {
                 b.setText(rs.getString("jj"));
             }
-        } catch (SQLException e) {
+        } catch (SQLException xx) {
+            System.out.println(xx);
+        }
+    }
+
+//Report//
+    public static void reportingSlip(JComboBox a, JComboBox b, JComboBox c) {
+        try {
+            File file = new File("src/report/slip_gaji.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load(file);
+            SQL = "select * from tb_penggajian where id_karyawan = '" + a.getSelectedItem().toString() + "' and bulan = '" + b.getSelectedItem().toString() + "' and tahun = '" + c.getSelectedItem().toString() + "'";
+            JRDesignQuery jrq = new JRDesignQuery();
+//            Map<String, Object> parameters;
+//            parameters = new HashMap<>();
+
+            jrq.setText(SQL);
+            jdesign.setQuery(jrq);
+            JasperReport jr = JasperCompileManager.compileReport(jdesign);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, con);
+            if (jp.getPages().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Data Tidak Ada!");
+            } else {
+                JasperViewer.viewReport(jp, false);
+            }
+        } catch (JRException e) {
             System.out.println(e);
         }
     }
-    
-    public static void jabatanSelected(JComboBox a, JTextField b) {
+    public static void reportingBulanan(JComboBox a, JComboBox b, String c) {
         try {
-            SQL = "select total_gaji as jj from tb_gaji where jabatan = '" + a.getSelectedItem().toString() + "'";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(SQL);
-            while(rs.next()){
-                b.setText(rs.getString("jj"));
+            File file = new File("src/report/laporan_bulanan.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load(file);
+            SQL = "select * from tb_penggajian where bulan = '" + a.getSelectedItem().toString() + "' and tahun = '" + b.getSelectedItem().toString() + "' order by id_penggajian asc";
+            JRDesignQuery jrq = new JRDesignQuery();
+            Map<String, Object> parameters;
+            parameters = new HashMap<>();
+            parameters.put("bulantahun", c);
+            jrq.setText(SQL);
+            jdesign.setQuery(jrq);
+            JasperReport jr = JasperCompileManager.compileReport(jdesign);
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, con);
+            if (jp.getPages().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Data Tidak Ada!");
+            } else {
+                JasperViewer.viewReport(jp, false);
             }
-        } catch (SQLException e) {
+        } catch (JRException e) {
             System.out.println(e);
         }
     }

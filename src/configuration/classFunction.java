@@ -457,10 +457,10 @@ public class classFunction {
     }
 
 //Control Form (Edit)//
-    public static void editDataPegawai(JTextField a, JComboBox b, JTextField c, JTextField d, JXDatePicker e, JTextField f, JLabel g) {
+    public static void editDataPegawai(JTextField a, JComboBox b, JTextField c, JTextField d, JXDatePicker e, JTextField f, JLabel g, JComboBox h) {
         try {
             String sql = "update tb_karyawan set nama_karyawan = ?, jenis_kelamin = ?, alamat = ?, "
-                    + "tempat_lahir = ?, tanggal_lahir = ?, no_hp = ? where id_karyawan = ? ";
+                    + "tempat_lahir = ?, tanggal_lahir = ?, no_hp = ?, jabatan = ? where id_karyawan = ? ";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, a.getText());
             pst.setString(2, b.getSelectedItem().toString());
@@ -468,10 +468,11 @@ public class classFunction {
             pst.setString(4, d.getText());
             pst.setString(5, new SimpleDateFormat("yyyy-MM-dd").format(e.getDate()));
             pst.setString(6, f.getText());
-            pst.setString(7, g.getText());
+            pst.setString(7, h.getSelectedItem().toString());
+            pst.setString(8, g.getText());            
             pst.executeUpdate();
-        } catch (SQLException h) {
-            System.out.println(h);
+        } catch (SQLException i) {
+            System.out.println(i);
         }
     }
 

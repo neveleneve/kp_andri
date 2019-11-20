@@ -33,6 +33,7 @@ public class Admin extends javax.swing.JFrame {
     public Admin(String nama) {
         initComponents();
         lbWelcome.setText("Selamat Datang, " + nama + " !");
+        lbnama.setText(nama);
         logo_.setText("");
         logo_CV();
         dtDataLahir.setFormats("dd MMMM yyyy");
@@ -58,6 +59,7 @@ public class Admin extends javax.swing.JFrame {
         cbReportTahun.setEnabled(false);
         lbInputIdPenggajian.setVisible(false);
         lbDataNewIDPegawai.setVisible(false);
+        lbnama.setVisible(false);
         //--------------------------------------------------------//
         btDataDelete.setEnabled(false);
         btDataEdit.setEnabled(false);
@@ -160,6 +162,8 @@ public class Admin extends javax.swing.JFrame {
         cbReportSelect = new javax.swing.JComboBox<>();
         lbWelcome = new javax.swing.JLabel();
         lbLogOut = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        lbnama = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -283,7 +287,7 @@ public class Admin extends javax.swing.JFrame {
         jPanel2.add(btDataEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 100, 40));
 
         lbDataNewIDPegawai.setText("jLabel17");
-        jPanel2.add(lbDataNewIDPegawai, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        jPanel2.add(lbDataNewIDPegawai, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel17.setText("Nama");
@@ -593,6 +597,18 @@ public class Admin extends javax.swing.JFrame {
         });
         jPanel6.add(lbLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 100, 30));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 100, 40));
+
+        lbnama.setText("jLabel17");
+        jPanel6.add(lbnama, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+
         getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 610));
 
         pack();
@@ -605,7 +621,7 @@ public class Admin extends javax.swing.JFrame {
         } else {
             int abcd = JOptionPane.showConfirmDialog(null, "Edit Pegawai Dengan ID " + lbDataNewIDPegawai.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
             if (abcd == JOptionPane.YES_OPTION) {
-                classFunction.editDataPegawai(txtDataNamaKaryawan, cbDataKelamin, txtDataAlamat, txtDataLahir, dtDataLahir, txtDataHP, lbDataNewIDPegawai);
+                classFunction.editDataPegawai(txtDataNamaKaryawan, cbDataKelamin, txtDataAlamat, txtDataLahir, dtDataLahir, txtDataHP, lbDataNewIDPegawai, cbDataJabatan);
                 classFunction.tampilDataPegawai(tb_pegawai);
                 classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin, cbDataJabatan);
                 classFunction.idPegawaiBaru(lbDataNewIDPegawai);
@@ -620,10 +636,10 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btDataEditActionPerformed
 
     private void btDataDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataDeleteActionPerformed
-        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+        if (txtDataNamaKaryawan.getText().equals("") || txtDataAlamat.getText().equals("") || cbDataJabatan.getSelectedIndex() == 0 || cbDataKelamin.getSelectedIndex() == 0 || txtDataLahir.getText().equals("") || txtDataHP.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Hapus Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
         } else {
-            int abcd = JOptionPane.showConfirmDialog(null, "Hapus Data Penggajian Dengan ID " + lbInputIdPenggajian.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            int abcd = JOptionPane.showConfirmDialog(null, "Hapus Data Penggajian Dengan ID " + lbDataNewIDPegawai.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
             if (abcd == JOptionPane.YES_OPTION) {
                 classFunction.deleteDataPegawai(lbDataNewIDPegawai);
                 classFunction.tampilDataPegawai(tb_pegawai);
@@ -781,12 +797,6 @@ public class Admin extends javax.swing.JFrame {
                 classFunction.idPegawaiBaru(lbInputIdPenggajian);
                 classFunction.tampilDataPegawai(tb_pegawai);
                 classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbInputBulan, cbDataJabatan);
-                cbInputGajiID.removeAllItems();
-                System.out.println("data lurah terinput");
-                cblurah.addItem("Pilih ID Pegawai...");
-                fillcbkelurahan();
-                classFunction.comboIDPegawai(cbInputGajiID);
-                classFunction.comboIDPegawai(cbReportIDKaryawan);
                 JOptionPane.showMessageDialog(this, "Input Data Pegawai Berhasil", "Berhasil!", JOptionPane.WARNING_MESSAGE);
             } else {
 
@@ -938,6 +948,12 @@ public class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lbLogOutMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Admin(lbnama.getText()).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -999,6 +1015,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbReportSelect;
     private javax.swing.JComboBox<String> cbReportTahun;
     private org.jdesktop.swingx.JXDatePicker dtDataLahir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1036,6 +1053,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel lbInputIdPenggajian;
     private javax.swing.JLabel lbLogOut;
     private javax.swing.JLabel lbWelcome;
+    private javax.swing.JLabel lbnama;
     private javax.swing.JLabel logo_;
     private javax.swing.JTable tb_gaji;
     private javax.swing.JTable tb_pegawai;

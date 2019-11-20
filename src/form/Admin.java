@@ -616,7 +616,7 @@ public class Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btDataEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataEditActionPerformed
-        if (txtDataNamaKaryawan.getText().equals("") || txtDataAlamat.getText().equals("") || txtDataLahir.getText().equals("") || txtDataHP.getText().equals("") || dtDataLahir.getDate().equals(new Date()) || cbDataKelamin.getSelectedIndex() == 0) {
+        if (dtDataLahir.getDate().equals(new Date()) || txtDataNamaKaryawan.getText().equals("") || txtDataAlamat.getText().equals("") || cbDataJabatan.getSelectedIndex() == 0 || cbDataKelamin.getSelectedIndex() == 0 || txtDataLahir.getText().equals("") || txtDataHP.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Edit Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
         } else {
             int abcd = JOptionPane.showConfirmDialog(null, "Edit Pegawai Dengan ID " + lbDataNewIDPegawai.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
@@ -636,7 +636,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btDataEditActionPerformed
 
     private void btDataDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataDeleteActionPerformed
-        if (txtDataNamaKaryawan.getText().equals("") || txtDataAlamat.getText().equals("") || cbDataJabatan.getSelectedIndex() == 0 || cbDataKelamin.getSelectedIndex() == 0 || txtDataLahir.getText().equals("") || txtDataHP.getText().equals("")) {
+        if (dtDataLahir.getDate().equals(new Date()) || txtDataNamaKaryawan.getText().equals("") || txtDataAlamat.getText().equals("") || cbDataJabatan.getSelectedIndex() == 0 || cbDataKelamin.getSelectedIndex() == 0 || txtDataLahir.getText().equals("") || txtDataHP.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Hapus Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
         } else {
             int abcd = JOptionPane.showConfirmDialog(null, "Hapus Data Penggajian Dengan ID " + lbDataNewIDPegawai.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
@@ -656,7 +656,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btDataDeleteActionPerformed
 
     private void btGajiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiEditActionPerformed
-        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+        if (txtGajiID.getText().equals("") || txtGajiJabatan.getText().equals("") || txtGajiTotal.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Edit Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
         } else {
             int abcd = JOptionPane.showConfirmDialog(null, "Edit Data Gaji Dengan ID " + txtGajiID.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
@@ -676,7 +676,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btGajiEditActionPerformed
 
     private void btGajiDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiDeleteActionPerformed
-        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+        if (txtGajiID.getText().equals("") || txtGajiJabatan.getText().equals("") || txtGajiTotal.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Tekan Tabel Untuk Delete Data", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
         } else {
             int abcd = JOptionPane.showConfirmDialog(null, "Delete Data Gaji Dengan ID " + txtGajiID.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
@@ -788,7 +788,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btGajiAddNewActionPerformed
 
     private void btDataSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataSaveActionPerformed
-        if (txtDataNamaKaryawan.getText().equals("") || txtDataAlamat.getText().equals("") || txtDataLahir.getText().equals("") || txtDataHP.getText().equals("") || dtDataLahir.getDate().equals(new Date()) || cbDataKelamin.getSelectedIndex() == 0) {
+        if (dtDataLahir.getDate().equals(new Date()) || txtDataNamaKaryawan.getText().equals("") || txtDataAlamat.getText().equals("") || cbDataJabatan.getSelectedIndex() == 0 || cbDataKelamin.getSelectedIndex() == 0 || txtDataLahir.getText().equals("") || txtDataHP.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Lengkapi Data Pegawai", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
         } else {
             int abcd = JOptionPane.showConfirmDialog(null, "Tambahkan Pegawai Dengan ID " + lbDataNewIDPegawai.getText() + " Atas Nama " + txtDataNamaKaryawan.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);

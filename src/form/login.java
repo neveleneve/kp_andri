@@ -30,6 +30,7 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         lbNamaAdmin.setVisible(false);
+        logoCV.setText("");
         logo_CV();
     }
 
@@ -59,6 +60,7 @@ public class login extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -121,9 +123,11 @@ public class login extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setBackground(new java.awt.Color(102, 102, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SELAMAT DATANG");
+        jLabel4.setOpaque(true);
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 4, 600, 50));
 
         lbNamaAdmin.setText("jLabel3");

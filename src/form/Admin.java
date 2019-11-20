@@ -169,10 +169,15 @@ public class Admin extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 153));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jTabbedPane1.setOpaque(true);
 
+        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo_.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -187,6 +192,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Home", jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tb_pegawai.setModel(new javax.swing.table.DefaultTableModel(
@@ -298,6 +304,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Data Pegawai", jPanel2);
 
+        jPanel4.setBackground(new java.awt.Color(102, 102, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tb_penggajian.setModel(new javax.swing.table.DefaultTableModel(
@@ -417,6 +424,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Input Penggajian", jPanel4);
 
+        jPanel3.setBackground(new java.awt.Color(102, 102, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tb_gaji.setModel(new javax.swing.table.DefaultTableModel(
@@ -508,6 +516,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Data Gaji", jPanel3);
 
+        jPanel5.setBackground(new java.awt.Color(102, 102, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -586,7 +595,7 @@ public class Admin extends javax.swing.JFrame {
         jPanel6.add(lbWelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, 20));
 
         lbLogOut.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        lbLogOut.setForeground(new java.awt.Color(51, 51, 255));
+        lbLogOut.setForeground(new java.awt.Color(102, 102, 255));
         lbLogOut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbLogOut.setText("Log Out");
         lbLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -595,7 +604,7 @@ public class Admin extends javax.swing.JFrame {
                 lbLogOutMouseClicked(evt);
             }
         });
-        jPanel6.add(lbLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 100, 30));
+        jPanel6.add(lbLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 100, 40));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Refresh");
@@ -951,7 +960,13 @@ public class Admin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         new Admin(lbnama.getText()).setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

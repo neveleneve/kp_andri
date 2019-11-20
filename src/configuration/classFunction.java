@@ -478,7 +478,7 @@ public class classFunction {
 
     public static void editDataPenggajian(JComboBox a, JTextField b, JComboBox c, JTextField d, JComboBox e, JComboBox f, JLabel g) {
         try {
-            String sql = "update tb_penggajian set id_karyawan = ?, nama_karyawan = ?, jabatan = ?, "
+            String sql = "update tb_penggajian set id_karyawan = ?, nama = ?, jabatan = ?, "
                     + "total_gaji = ?, bulan_gaji = ?, tahun_gaji = ? where id_penggajian = ? ";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, a.getSelectedItem().toString());

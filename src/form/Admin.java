@@ -853,7 +853,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_cbInputJabatanItemStateChanged
 
     private void btGajiSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGajiSaveActionPerformed
-        if (txtInputNama.getText().equals("") || txtInputTotal.getText().equals("") || cbInputBulan.getSelectedIndex() == 0 || cbInputGajiID.getSelectedIndex() == 0 || cbInputJabatan.getSelectedIndex() == 0 || cbInputTahun.getSelectedIndex() == 0) {
+        if (txtGajiID.getText().equals("") || txtGajiJabatan.getText().equals("") || txtGajiTotal.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Lengkapi Data Gaji", "Kesalahan!", JOptionPane.WARNING_MESSAGE);
         } else {
             int abcd = JOptionPane.showConfirmDialog(null, "Tambahkan Data Gaji Dengan ID " + lbInputIdPenggajian.getText() + " Untuk Karyawan " + txtInputNama.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);

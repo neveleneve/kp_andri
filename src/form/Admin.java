@@ -48,6 +48,7 @@ public class Admin extends javax.swing.JFrame {
         classFunction.tampilDataGaji(tb_gaji);
         //--------------------------------------------------------//
         classFunction.comboJabatan(cbInputJabatan);
+        classFunction.comboJabatan(cbDataJabatan);
         classFunction.comboIDPegawai(cbInputGajiID);
         classFunction.comboIDPegawai(cbReportIDKaryawan);
         //--------------------------------------------------------//
@@ -108,6 +109,8 @@ public class Admin extends javax.swing.JFrame {
         btDataSave = new javax.swing.JButton();
         btDataEdit = new javax.swing.JButton();
         lbDataNewIDPegawai = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        cbDataJabatan = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tb_penggajian = new javax.swing.JTable();
@@ -203,45 +206,45 @@ public class Admin extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 875, 260));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Nama");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 120, 30));
+        jLabel1.setText("Jabatan");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 120, 30));
 
         txtDataNamaKaryawan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel2.add(txtDataNamaKaryawan, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 160, 30));
+        jPanel2.add(txtDataNamaKaryawan, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 160, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Alamat");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 120, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 120, 30));
 
         txtDataAlamat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel2.add(txtDataAlamat, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 160, 30));
+        jPanel2.add(txtDataAlamat, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 160, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("No. Handphone");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 120, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 120, 30));
 
         txtDataHP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel2.add(txtDataHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 160, 30));
+        jPanel2.add(txtDataHP, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 160, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Jenis Kelamin");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 120, 30));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 120, 30));
 
         cbDataKelamin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbDataKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Kelamin...", "Pria", "Wanita" }));
-        jPanel2.add(cbDataKelamin, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 160, 30));
+        jPanel2.add(cbDataKelamin, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 160, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Tanggal Lahir");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 120, 30));
-        jPanel2.add(dtDataLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 160, 30));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 120, 30));
+        jPanel2.add(dtDataLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 160, 30));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Tempat Lahir");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 120, 30));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 120, 30));
 
         txtDataLahir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel2.add(txtDataLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 160, 30));
+        jPanel2.add(txtDataLahir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 160, 30));
 
         btDataDelete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btDataDelete.setText("Delete");
@@ -280,7 +283,14 @@ public class Admin extends javax.swing.JFrame {
         jPanel2.add(btDataEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 100, 40));
 
         lbDataNewIDPegawai.setText("jLabel17");
-        jPanel2.add(lbDataNewIDPegawai, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        jPanel2.add(lbDataNewIDPegawai, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel17.setText("Nama");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 120, 30));
+
+        cbDataJabatan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Jabatan..." }));
+        jPanel2.add(cbDataJabatan, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, 160, 30));
 
         jTabbedPane1.addTab("Data Pegawai", jPanel2);
 
@@ -597,7 +607,7 @@ public class Admin extends javax.swing.JFrame {
             if (abcd == JOptionPane.YES_OPTION) {
                 classFunction.editDataPegawai(txtDataNamaKaryawan, cbDataKelamin, txtDataAlamat, txtDataLahir, dtDataLahir, txtDataHP, lbDataNewIDPegawai);
                 classFunction.tampilDataPegawai(tb_pegawai);
-                classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin);
+                classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin, cbDataJabatan);
                 classFunction.idPegawaiBaru(lbDataNewIDPegawai);
                 btDataSave.setEnabled(true);
                 btDataEdit.setEnabled(false);
@@ -617,7 +627,7 @@ public class Admin extends javax.swing.JFrame {
             if (abcd == JOptionPane.YES_OPTION) {
                 classFunction.deleteDataPegawai(lbDataNewIDPegawai);
                 classFunction.tampilDataPegawai(tb_pegawai);
-                classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin);
+                classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin, cbDataJabatan);
                 classFunction.idPegawaiBaru(lbDataNewIDPegawai);
                 btDataSave.setEnabled(true);
                 btDataEdit.setEnabled(false);
@@ -738,7 +748,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btReportAddNewActionPerformed
 
     private void btDataAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataAddNewActionPerformed
-        classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin);
+        classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbDataKelamin, cbDataJabatan);
         classFunction.idPegawaiBaru(lbDataNewIDPegawai);
         btDataSave.setEnabled(true);
         btDataEdit.setEnabled(false);
@@ -767,10 +777,16 @@ public class Admin extends javax.swing.JFrame {
         } else {
             int abcd = JOptionPane.showConfirmDialog(null, "Tambahkan Pegawai Dengan ID " + lbDataNewIDPegawai.getText() + " Atas Nama " + txtDataNamaKaryawan.getText() + " ?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
             if (abcd == JOptionPane.YES_OPTION) {
-                classFunction.insertDataPegawai(lbDataNewIDPegawai, txtDataNamaKaryawan, cbDataKelamin, txtDataAlamat, txtDataLahir, dtDataLahir, txtDataHP);
+                classFunction.insertDataPegawai(lbDataNewIDPegawai, cbDataJabatan, txtDataNamaKaryawan, cbDataKelamin, txtDataAlamat, txtDataLahir, dtDataLahir, txtDataHP);
                 classFunction.idPegawaiBaru(lbInputIdPenggajian);
                 classFunction.tampilDataPegawai(tb_pegawai);
-                classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbInputBulan);
+                classFunction.clearData(txtDataNamaKaryawan, txtDataAlamat, txtDataLahir, txtDataHP, dtDataLahir, cbInputBulan, cbDataJabatan);
+                cbInputGajiID.removeAllItems();
+                System.out.println("data lurah terinput");
+                cblurah.addItem("Pilih ID Pegawai...");
+                fillcbkelurahan();
+                classFunction.comboIDPegawai(cbInputGajiID);
+                classFunction.comboIDPegawai(cbReportIDKaryawan);
                 JOptionPane.showMessageDialog(this, "Input Data Pegawai Berhasil", "Berhasil!", JOptionPane.WARNING_MESSAGE);
             } else {
 
@@ -797,9 +813,16 @@ public class Admin extends javax.swing.JFrame {
 
     private void cbInputGajiIDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbInputGajiIDItemStateChanged
         if (cbInputGajiID.getSelectedIndex() == 0) {
+            cbInputBulan.setSelectedIndex(0);
+            cbInputJabatan.setSelectedIndex(0);
+            cbInputTahun.setSelectedIndex(0);
             txtInputNama.setText("");
+            //txtInputTotal.setText("");
         } else {
-            classFunction.comboSelected(cbInputGajiID, txtInputNama, "nama_karyawan", "tb_karyawan", "id_karyawan");
+            classFunction.comboSelectedSpesial("nama_karyawan", "jabatan",
+                    "tb_karyawan", "id_karyawan", cbInputGajiID, txtInputNama,
+                    cbInputJabatan);
+            //classFunction.comboSelected(cbInputGajiID, txtInputNama, "nama_karyawan", "tb_karyawan", "id_karyawan");
         }
     }//GEN-LAST:event_cbInputGajiIDItemStateChanged
 
@@ -848,10 +871,11 @@ public class Admin extends javax.swing.JFrame {
         }
         lbDataNewIDPegawai.setText(tb_pegawai.getValueAt(s, 0).toString());
         txtDataNamaKaryawan.setText(tb_pegawai.getValueAt(s, 1).toString());
-        cbDataKelamin.setSelectedItem(tb_pegawai.getValueAt(s, 2).toString());
-        txtDataAlamat.setText(tb_pegawai.getValueAt(s, 3).toString());
-        txtDataLahir.setText(tb_pegawai.getValueAt(s, 4).toString());
-        txtDataHP.setText(tb_pegawai.getValueAt(s, 6).toString());
+        cbDataJabatan.setSelectedItem(tb_pegawai.getValueAt(s, 2).toString());
+        cbDataKelamin.setSelectedItem(tb_pegawai.getValueAt(s, 3).toString());
+        txtDataAlamat.setText(tb_pegawai.getValueAt(s, 4).toString());
+        txtDataLahir.setText(tb_pegawai.getValueAt(s, 6).toString());
+        txtDataHP.setText(tb_pegawai.getValueAt(s, 7).toString());
         btDataSave.setEnabled(false);
         btDataDelete.setEnabled(true);
         btDataEdit.setEnabled(true);
@@ -964,6 +988,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btInputSave;
     private javax.swing.JButton btReportAddNew;
     private javax.swing.JButton btReportCetak;
+    private javax.swing.JComboBox<String> cbDataJabatan;
     private javax.swing.JComboBox<String> cbDataKelamin;
     private javax.swing.JComboBox<String> cbInputBulan;
     private javax.swing.JComboBox<String> cbInputGajiID;
@@ -982,6 +1007,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;

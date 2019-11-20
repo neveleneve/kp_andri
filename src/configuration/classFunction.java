@@ -91,6 +91,7 @@ public class classFunction {
         tbMd = new DefaultTableModel();
         tbMd.addColumn("ID Pegawai");
         tbMd.addColumn("Nama Pegawai");
+        tbMd.addColumn("Jabatan");
         tbMd.addColumn("Jenis Kelamin");
         tbMd.addColumn("Alamat");
         tbMd.addColumn("Tempat Lahir");
@@ -104,12 +105,13 @@ public class classFunction {
             while (res.next()) {
                 tbMd.addRow(new Object[]{
                     res.getString(1),
-                    res.getString(2),
                     res.getString(3),
+                    res.getString(2),
                     res.getString(4),
                     res.getString(5),
-                    sdf.format(res.getDate(6)),
-                    res.getString(7)
+                    sdf.format(res.getDate(7)),
+                    res.getString(6),
+                    res.getString(8)
                 });
             }
 
@@ -124,13 +126,15 @@ public class classFunction {
             tbl.getColumnModel().getColumn(4).setHeaderRenderer(midAligment);
             tbl.getColumnModel().getColumn(5).setHeaderRenderer(midAligment);
             tbl.getColumnModel().getColumn(6).setHeaderRenderer(midAligment);
+            tbl.getColumnModel().getColumn(7).setHeaderRenderer(midAligment);
             tbl.getColumnModel().getColumn(0).setPreferredWidth(70);
             tbl.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tbl.getColumnModel().getColumn(2).setPreferredWidth(70);
-            tbl.getColumnModel().getColumn(3).setPreferredWidth(300);
-            tbl.getColumnModel().getColumn(4).setPreferredWidth(100);
-            tbl.getColumnModel().getColumn(5).setPreferredWidth(120);
-            tbl.getColumnModel().getColumn(6).setPreferredWidth(100);
+            tbl.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tbl.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tbl.getColumnModel().getColumn(4).setPreferredWidth(300);
+            tbl.getColumnModel().getColumn(5).setPreferredWidth(100);
+            tbl.getColumnModel().getColumn(6).setPreferredWidth(120);
+            tbl.getColumnModel().getColumn(7).setPreferredWidth(100);
             tbl.getColumnModel().getColumn(0).setCellRenderer(midAligment);
             tbl.getColumnModel().getColumn(1).setCellRenderer(midAligment);
             tbl.getColumnModel().getColumn(2).setCellRenderer(midAligment);
@@ -138,6 +142,7 @@ public class classFunction {
             tbl.getColumnModel().getColumn(4).setCellRenderer(midAligment);
             tbl.getColumnModel().getColumn(5).setCellRenderer(midAligment);
             tbl.getColumnModel().getColumn(6).setCellRenderer(midAligment);
+            tbl.getColumnModel().getColumn(7).setCellRenderer(midAligment);
             tbl.getColumnModel().getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             //tbl.getTableHeader().setReorderingAllowed(true);
             tbl.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -325,13 +330,14 @@ public class classFunction {
     }
 
 //Control Form (Clear)//
-    public static void clearData(JTextField a, JTextField b, JTextField c, JTextField d, JXDatePicker e, JComboBox f) {
+    public static void clearData(JTextField a, JTextField b, JTextField c, JTextField d, JXDatePicker e, JComboBox f, JComboBox g) {
         a.setText("");
         b.setText("");
         c.setText("");
         d.setText("");
         e.setDate(new Date());
         f.setSelectedIndex(0);
+        g.setSelectedIndex(0);
     }
 
     public static void clearInput(JComboBox a, JComboBox b, JComboBox c, JComboBox d, JTextField e, JTextField f) {
@@ -358,18 +364,19 @@ public class classFunction {
     }
 
 //Control Form (Insert)//
-    public static void insertDataPegawai(JLabel a, JTextField b, JComboBox c, JTextField d, JTextField e, JXDatePicker f, JTextField g) {
+    public static void insertDataPegawai(JLabel a, JComboBox h, JTextField b, JComboBox c, JTextField d, JTextField e, JXDatePicker f, JTextField g) {
         try {
-            SQL = "insert into tb_karyawan values(?,?,?,?,?,?,?)";
+            SQL = "insert into tb_karyawan values(?,?,?,?,?,?,?,?)";
             java.sql.PreparedStatement stmt = con.prepareStatement(SQL);
             try {
                 stmt.setString(1, a.getText());
-                stmt.setString(2, b.getText());
-                stmt.setString(3, c.getSelectedItem().toString());
-                stmt.setString(4, d.getText());
-                stmt.setString(5, e.getText());
-                stmt.setString(6, new SimpleDateFormat("yyyy-MM-dd").format(f.getDate()));
-                stmt.setString(7, g.getText());
+                stmt.setString(2, h.getSelectedItem().toString());
+                stmt.setString(3, b.getText());
+                stmt.setString(4, c.getSelectedItem().toString());
+                stmt.setString(5, d.getText());
+                stmt.setString(6, e.getText());
+                stmt.setString(7, new SimpleDateFormat("yyyy-MM-dd").format(f.getDate()));
+                stmt.setString(8, g.getText());
                 stmt.executeUpdate();
             } catch (SQLException qq) {
                 System.out.println(qq);
@@ -533,12 +540,27 @@ public class classFunction {
 //Combo Change//
     public static void comboSelected(JComboBox a, JTextField b, String c, String d, String e) {
         try {
-            SQL = "select nama_karyawan as jj from tb_karyawan where id_karyawan = '" + a.getSelectedItem().toString() + "'";
             SQL = "select " + c + " as jj from " + d + " where " + e + " = '" + a.getSelectedItem().toString() + "'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(SQL);
             while (rs.next()) {
                 b.setText(rs.getString("jj"));
+            }
+        } catch (SQLException xx) {
+            System.out.println(xx);
+        }
+    }
+
+    public static void comboSelectedSpesial(String a, String b, 
+            String c, String d, JComboBox e, JTextField f, 
+            JComboBox g) {
+        try {
+            SQL = "select " + a + ", " + b + " from " + c + " where " + d + " = '" + e.getSelectedItem().toString() + "'";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(SQL);
+            while (rs.next()) {
+                f.setText(rs.getString(a));
+                g.setSelectedItem(rs.getString(b));
             }
         } catch (SQLException xx) {
             System.out.println(xx);
@@ -568,6 +590,7 @@ public class classFunction {
             System.out.println(e);
         }
     }
+
     public static void reportingBulanan(JComboBox a, JComboBox b, String c) {
         try {
             File file = new File("src/report/laporan_bulanan.jrxml");

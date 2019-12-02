@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -569,11 +570,11 @@ public class classFunction {
     }
 
 //Report//
-    public static void reportingSlip(JComboBox a, JComboBox b, JComboBox c) {
+    public static void reportingSlip(JComboBox a, String b, JComboBox c) {
         try {
             File file = new File("src/report/slip_gaji.jrxml");
             JasperDesign jdesign = JRXmlLoader.load(file);
-            SQL = "select * from tb_penggajian where id_karyawan = '" + a.getSelectedItem().toString() + "' and bulan = '" + b.getSelectedItem().toString() + "' and tahun = '" + c.getSelectedItem().toString() + "'";
+            SQL = "select * from tb_penggajian where id_karyawan = '" + a.getSelectedItem().toString() + "' and bulan in " + b + " and tahun = '" + c.getSelectedItem().toString() + "'";
             JRDesignQuery jrq = new JRDesignQuery();
 //            Map<String, Object> parameters;
 //            parameters = new HashMap<>();
@@ -589,22 +590,23 @@ public class classFunction {
             }
         } catch (JRException e) {
             System.out.println(e);
+            Throwable cause = e.getCause();
         }
     }
 
-    public static void reportingBulanan(JComboBox a, JComboBox b, String c) {
+    public static void reportingBulanan(String a, JComboBox b) {
         try {
             File file = new File("src/report/laporan_bulanan.jrxml");
             JasperDesign jdesign = JRXmlLoader.load(file);
-            SQL = "select * from tb_penggajian where bulan = '" + a.getSelectedItem().toString() + "' and tahun = '" + b.getSelectedItem().toString() + "' order by id_penggajian asc";
+            SQL = "select * from tb_penggajian where bulan in " + a + " and tahun = '" + b.getSelectedItem().toString() + "'";
             JRDesignQuery jrq = new JRDesignQuery();
-            Map<String, Object> parameters;
-            parameters = new HashMap<>();
-            parameters.put("bulantahun", c);
+//            Map<String, Object> parameters;
+//            parameters = new HashMap<>();
+//            parameters.put("bulantahun", c);
             jrq.setText(SQL);
             jdesign.setQuery(jrq);
             JasperReport jr = JasperCompileManager.compileReport(jdesign);
-            JasperPrint jp = JasperFillManager.fillReport(jr, parameters, con);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, con);
             if (jp.getPages().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Data Tidak Ada!");
             } else {
@@ -612,6 +614,7 @@ public class classFunction {
             }
         } catch (JRException e) {
             System.out.println(e);
+            Throwable cause = e.getCause();
         }
     }
 }

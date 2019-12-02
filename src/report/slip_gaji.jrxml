@@ -34,9 +34,12 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="53" splitType="Stretch">
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
 			<staticText>
-				<reportElement x="298" y="3" width="277" height="25" />
+				<reportElement x="298" y="0" width="277" height="25" />
 				<textElement textAlignment="Right">
 					<font size="15" isBold="true"/>
 					<paragraph rightIndent="10" spacingBefore="5"/>
@@ -44,7 +47,7 @@
 				<text><![CDATA[SLIP GAJI KARYAWAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="298" y="24" width="264" height="25" />
+				<reportElement x="298" y="21" width="264" height="25" />
 				<textElement textAlignment="Right">
 					<font size="10" isBold="true" isUnderline="false"/>
 					<paragraph rightIndent="10" spacingBefore="5"/>
@@ -52,23 +55,23 @@
 				<text><![CDATA[CV. MEGAH KARYA]]></text>
 			</staticText>
 			<image>
-				<reportElement x="5" y="4" width="97" height="43" />
+				<reportElement x="5" y="1" width="97" height="43" />
 				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\kp_andri\\src\\form\\logo.png"]]></imageExpression>
 			</image>
 			<line>
-				<reportElement x="0" y="50" width="575" height="1" />
+				<reportElement x="0" y="47" width="575" height="1" />
 			</line>
 		</band>
-	</title>
-	<pageHeader>
+	</pageHeader>
+	<columnHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="48" y="8" width="100" height="20" />
+				<reportElement x="48" y="0" width="100" height="20" />
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{id_penggajian}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="8" width="48" height="20" />
+				<reportElement x="0" y="0" width="48" height="20" />
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 					<paragraph rightIndent="5"/>
@@ -76,12 +79,12 @@
 				<text><![CDATA[Nomor :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="462" y="8" width="100" height="20" />
+				<reportElement x="462" y="0" width="100" height="20" />
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMM yyyy", new Locale("in", "ID")).format($F{tanggal})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="412" y="8" width="50" height="20" />
+				<reportElement x="412" y="0" width="50" height="20" />
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 					<paragraph rightIndent="5"/>
@@ -89,14 +92,14 @@
 				<text><![CDATA[Tanggal :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="233" y="8" width="65" height="20" />
+				<reportElement x="233" y="0" width="65" height="20" />
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{bulan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="183" y="8" width="50" height="20" />
+				<reportElement x="183" y="0" width="50" height="20" />
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font isBold="true"/>
 					<paragraph rightIndent="5"/>
@@ -104,14 +107,11 @@
 				<text><![CDATA[Bulan :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="298" y="8" width="46" height="20" />
+				<reportElement x="298" y="0" width="46" height="20" />
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{tahun}]]></textFieldExpression>
 			</textField>
 		</band>
-	</pageHeader>
-	<columnHeader>
-		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="60" splitType="Stretch">

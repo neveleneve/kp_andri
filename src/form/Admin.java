@@ -11,18 +11,20 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author NEVE
  */
-public class Admin extends javax.swing.JFrame {
+public final class Admin extends javax.swing.JFrame {
 
     /**
      * Creates new form Admin
@@ -55,7 +57,8 @@ public class Admin extends javax.swing.JFrame {
         //--------------------------------------------------------//
         txtReportNama.setEnabled(false);
         cbReportIDKaryawan.setEnabled(false);
-        cbReportBulan.setEnabled(false);
+//        cbReportBulan.setEnabled(false);
+        disableBulanCheckbox();
         cbReportTahun.setEnabled(false);
         lbInputIdPenggajian.setVisible(false);
         lbDataNewIDPegawai.setVisible(false);
@@ -76,6 +79,120 @@ public class Admin extends javax.swing.JFrame {
         ImageIcon i = new ImageIcon(img2);
         logo_.setIcon(i);
     }
+    
+    void disableBulanCheckbox() {
+        cbJanuari.setEnabled(false);
+        cbFebruari.setEnabled(false);
+        cbMaret.setEnabled(false);
+        cbApril.setEnabled(false);
+        cbMei.setEnabled(false);
+        cbJuni.setEnabled(false);
+        cbJuli.setEnabled(false);
+        cbAgustus.setEnabled(false);
+        cbSeptember.setEnabled(false);
+        cbOktober.setEnabled(false);
+        cbNovember.setEnabled(false);
+        cbDesember.setEnabled(false);
+    }
+
+    void enableBulanCheckbox() {
+        cbJanuari.setEnabled(true);
+        cbFebruari.setEnabled(true);
+        cbMaret.setEnabled(true);
+        cbApril.setEnabled(true);
+        cbMei.setEnabled(true);
+        cbJuni.setEnabled(true);
+        cbJuli.setEnabled(true);
+        cbAgustus.setEnabled(true);
+        cbSeptember.setEnabled(true);
+        cbOktober.setEnabled(true);
+        cbNovember.setEnabled(true);
+        cbDesember.setEnabled(true);
+    }
+
+    void deselectBulanCheckbox() {
+        cbJanuari.setSelected(false);
+        cbFebruari.setSelected(false);
+        cbMaret.setSelected(false);
+        cbApril.setSelected(false);
+        cbMei.setSelected(false);
+        cbJuni.setSelected(false);
+        cbJuli.setSelected(false);
+        cbAgustus.setSelected(false);
+        cbSeptember.setSelected(false);
+        cbOktober.setSelected(false);
+        cbNovember.setSelected(false);
+        cbDesember.setSelected(false);
+    }
+
+    public void checkboxStatArray() {
+        String a, b, c, d, e, f, g, h, i, j, k, l;
+        if (cbJanuari.isSelected()) {
+            a = cbJanuari.getText();
+        } else {
+            a = "";
+        }
+        if (cbFebruari.isSelected()) {
+            b = cbFebruari.getText();
+        } else {
+            b = "";
+        }
+        if (cbMaret.isSelected()) {
+            c = cbMaret.getText();
+        } else {
+            c = "";
+        }
+        if (cbApril.isSelected()) {
+            d = cbApril.getText();
+        } else {
+            d = "";
+        }
+        if (cbMei.isSelected()) {
+            e = cbMei.getText();
+        } else {
+            e = "";
+        }
+        if (cbJuni.isSelected()) {
+            f = cbJuni.getText();
+        } else {
+            f = "";
+        }
+        if (cbJuli.isSelected()) {
+            g = cbJuli.getText();
+        } else {
+            g = "";
+        }
+        if (cbAgustus.isSelected()) {
+            h = cbAgustus.getText();
+        } else {
+            h = "";
+        }
+        if (cbSeptember.isSelected()) {
+            i = cbSeptember.getText();
+        } else {
+            i = "";
+        }
+        if (cbOktober.isSelected()) {
+            j = cbOktober.getText();
+        } else {
+            j = "";
+        }
+        if (cbNovember.isSelected()) {
+            k = cbNovember.getText();
+        } else {
+            k = "";
+        }
+        if (cbDesember.isSelected()) {
+            l = cbDesember.getText();
+        } else {
+            l = "";
+        }
+        String[] m = {a, b, c, d, e, f, g, h, i, j, k, l};
+        String n = Arrays.toString(m).replace("[", "( ").replace(", ]", ")").replace(" ,", "").replace("( ", "(").replace(", )", ")");
+        System.out.println();
+        query = n;
+    }
+    String query;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,7 +268,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         cbReportIDKaryawan = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        cbReportBulan = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
         txtReportNama = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
@@ -160,6 +276,18 @@ public class Admin extends javax.swing.JFrame {
         btReportAddNew = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         cbReportSelect = new javax.swing.JComboBox<>();
+        cbJuni = new javax.swing.JCheckBox();
+        cbJanuari = new javax.swing.JCheckBox();
+        cbFebruari = new javax.swing.JCheckBox();
+        cbMaret = new javax.swing.JCheckBox();
+        cbApril = new javax.swing.JCheckBox();
+        cbMei = new javax.swing.JCheckBox();
+        cbDesember = new javax.swing.JCheckBox();
+        cbNovember = new javax.swing.JCheckBox();
+        cbOktober = new javax.swing.JCheckBox();
+        cbSeptember = new javax.swing.JCheckBox();
+        cbAgustus = new javax.swing.JCheckBox();
+        cbJuli = new javax.swing.JCheckBox();
         lbWelcome = new javax.swing.JLabel();
         lbLogOut = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -534,11 +662,7 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel20.setText("Bulan");
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 120, 30));
-
-        cbReportBulan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbReportBulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Bulan...", "Januari", "Februari", "Maret", "April", "Maret", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
-        jPanel5.add(cbReportBulan, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 160, 30));
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 120, 30));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel21.setText("Nama Pegawai");
@@ -549,11 +673,11 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel22.setText("Tahun");
-        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 120, 30));
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 120, 30));
 
         cbReportTahun.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbReportTahun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Tahun...", "2018", "2019", "2020", "2021", "2022", "2023" }));
-        jPanel5.add(cbReportTahun, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 160, 30));
+        jPanel5.add(cbReportTahun, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 160, 30));
 
         btReportCetak.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btReportCetak.setText("Cetak");
@@ -562,7 +686,7 @@ public class Admin extends javax.swing.JFrame {
                 btReportCetakActionPerformed(evt);
             }
         });
-        jPanel5.add(btReportCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 100, 40));
+        jPanel5.add(btReportCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 100, 40));
 
         btReportAddNew.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btReportAddNew.setText("Add New");
@@ -571,7 +695,7 @@ public class Admin extends javax.swing.JFrame {
                 btReportAddNewActionPerformed(evt);
             }
         });
-        jPanel5.add(btReportAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 100, 40));
+        jPanel5.add(btReportAddNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 100, 40));
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel24.setText("ID Pegawai");
@@ -585,6 +709,78 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         jPanel5.add(cbReportSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 160, 30));
+
+        cbJuni.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbJuni.setText("Juni");
+        cbJuni.setOpaque(false);
+        cbJuni.setRequestFocusEnabled(false);
+        jPanel5.add(cbJuni, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
+
+        cbJanuari.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbJanuari.setText("Januari");
+        cbJanuari.setOpaque(false);
+        cbJanuari.setRequestFocusEnabled(false);
+        jPanel5.add(cbJanuari, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, -1));
+
+        cbFebruari.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbFebruari.setText("Februari");
+        cbFebruari.setOpaque(false);
+        cbFebruari.setRequestFocusEnabled(false);
+        jPanel5.add(cbFebruari, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, -1, -1));
+
+        cbMaret.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbMaret.setText("Maret");
+        cbMaret.setOpaque(false);
+        cbMaret.setRequestFocusEnabled(false);
+        jPanel5.add(cbMaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, -1, -1));
+
+        cbApril.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbApril.setText("April");
+        cbApril.setOpaque(false);
+        cbApril.setRequestFocusEnabled(false);
+        jPanel5.add(cbApril, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, -1, -1));
+
+        cbMei.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbMei.setText("Mei");
+        cbMei.setOpaque(false);
+        cbMei.setRequestFocusEnabled(false);
+        jPanel5.add(cbMei, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, -1, -1));
+
+        cbDesember.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbDesember.setText("Desember");
+        cbDesember.setOpaque(false);
+        cbDesember.setRequestFocusEnabled(false);
+        jPanel5.add(cbDesember, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, -1, -1));
+
+        cbNovember.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbNovember.setText("November");
+        cbNovember.setOpaque(false);
+        cbNovember.setRequestFocusEnabled(false);
+        jPanel5.add(cbNovember, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, -1, -1));
+
+        cbOktober.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbOktober.setText("Oktober");
+        cbOktober.setOpaque(false);
+        cbOktober.setRequestFocusEnabled(false);
+        jPanel5.add(cbOktober, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, -1, -1));
+
+        cbSeptember.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbSeptember.setText("September");
+        cbSeptember.setOpaque(false);
+        cbSeptember.setRequestFocusEnabled(false);
+        jPanel5.add(cbSeptember, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, -1, -1));
+
+        cbAgustus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbAgustus.setText("Agustus");
+        cbAgustus.setOpaque(false);
+        cbAgustus.setRequestFocusEnabled(false);
+        jPanel5.add(cbAgustus, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, -1, -1));
+
+        cbJuli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbJuli.setText("Juli");
+        cbJuli.setOpaque(false);
+        cbJuli.setRequestFocusEnabled(false);
+        jPanel5.add(cbJuli, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, -1, -1));
 
         jTabbedPane1.addTab("Laporan", jPanel5);
 
@@ -745,31 +941,37 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btInputDeleteActionPerformed
 
     private void btReportCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReportCetakActionPerformed
+
+        checkboxStatArray();
+        System.out.println(query);
         switch (cbReportSelect.getSelectedIndex()) {
             case 0:
                 JOptionPane.showMessageDialog(this, "Silahkan Pilih Jenis Laporan Yang Akan Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
                 break;
             case 1:
-                if (cbReportIDKaryawan.getSelectedIndex() == 0 || cbReportBulan.getSelectedIndex() == 0 || cbReportTahun.getSelectedIndex() == 0) {
+                if (cbReportIDKaryawan.getSelectedIndex() == 0 || cbReportTahun.getSelectedIndex() == 0) {
                     JOptionPane.showMessageDialog(this, "Silahkan Pilih Data Pegawai Untuk Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    classFunction.reportingSlip(cbReportIDKaryawan, cbReportBulan, cbReportTahun);
+//                    checkboxStatArray(query);
+                    System.out.println(query);
+                    //classFunction.reportingSlip(cbReportIDKaryawan, cbReportBulan, cbReportTahun);
                 }
                 break;
             case 2:
-                String bulanan = cbReportBulan.getSelectedItem().toString() + " " + cbReportTahun.getSelectedItem().toString();
-                if (cbReportBulan.getSelectedIndex() == 0 || cbReportTahun.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(this, "Silahkan Pilih Data Laporan Yang Akan Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    classFunction.reportingBulanan(cbReportBulan, cbReportTahun, bulanan);
-                }
+//                String bulanan = cbReportBulan.getSelectedItem().toString() + " " + cbReportTahun.getSelectedItem().toString();
+//                if (cbReportBulan.getSelectedIndex() == 0 || cbReportTahun.getSelectedIndex() == 0) {
+//                    JOptionPane.showMessageDialog(this, "Silahkan Pilih Data Laporan Yang Akan Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+//                } else {
+//                    classFunction.reportingBulanan(cbReportBulan, cbReportTahun, bulanan);
+//                }
         }
 
 
     }//GEN-LAST:event_btReportCetakActionPerformed
 
     private void btReportAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReportAddNewActionPerformed
-        classFunction.clearReport(cbReportBulan, cbReportIDKaryawan, cbReportTahun, txtReportNama, cbReportSelect);
+//        classFunction.clearReport(cbReportBulan, cbReportIDKaryawan, cbReportTahun, txtReportNama, cbReportSelect);
+        checkboxStatArray();
     }//GEN-LAST:event_btReportAddNewActionPerformed
 
     private void btDataAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDataAddNewActionPerformed
@@ -928,19 +1130,19 @@ public class Admin extends javax.swing.JFrame {
         switch (cbReportSelect.getSelectedIndex()) {
             case 0:
                 cbReportIDKaryawan.setEnabled(false);
-                cbReportBulan.setEnabled(false);
+                disableBulanCheckbox();
                 cbReportTahun.setEnabled(false);
                 txtReportNama.setEnabled(false);
                 break;
             case 1:
                 cbReportIDKaryawan.setEnabled(true);
-                cbReportBulan.setEnabled(true);
+                enableBulanCheckbox();
                 cbReportTahun.setEnabled(true);
                 txtReportNama.setEnabled(true);
                 break;
             case 2:
                 cbReportIDKaryawan.setEnabled(false);
-                cbReportBulan.setEnabled(true);
+                enableBulanCheckbox();
                 cbReportTahun.setEnabled(true);
                 txtReportNama.setEnabled(false);
                 break;
@@ -966,7 +1168,7 @@ public class Admin extends javax.swing.JFrame {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
         new Admin(lbnama.getText()).setVisible(true);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -1019,16 +1221,27 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btInputSave;
     private javax.swing.JButton btReportAddNew;
     private javax.swing.JButton btReportCetak;
+    private javax.swing.JCheckBox cbAgustus;
+    private javax.swing.JCheckBox cbApril;
     private javax.swing.JComboBox<String> cbDataJabatan;
     private javax.swing.JComboBox<String> cbDataKelamin;
+    private javax.swing.JCheckBox cbDesember;
+    private javax.swing.JCheckBox cbFebruari;
     private javax.swing.JComboBox<String> cbInputBulan;
     private javax.swing.JComboBox<String> cbInputGajiID;
     private javax.swing.JComboBox<String> cbInputJabatan;
     private javax.swing.JComboBox<String> cbInputTahun;
-    private javax.swing.JComboBox<String> cbReportBulan;
+    private javax.swing.JCheckBox cbJanuari;
+    private javax.swing.JCheckBox cbJuli;
+    private javax.swing.JCheckBox cbJuni;
+    private javax.swing.JCheckBox cbMaret;
+    private javax.swing.JCheckBox cbMei;
+    private javax.swing.JCheckBox cbNovember;
+    private javax.swing.JCheckBox cbOktober;
     private javax.swing.JComboBox<String> cbReportIDKaryawan;
     private javax.swing.JComboBox<String> cbReportSelect;
     private javax.swing.JComboBox<String> cbReportTahun;
+    private javax.swing.JCheckBox cbSeptember;
     private org.jdesktop.swingx.JXDatePicker dtDataLahir;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

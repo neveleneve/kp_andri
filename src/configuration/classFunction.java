@@ -470,7 +470,7 @@ public class classFunction {
             pst.setString(5, new SimpleDateFormat("yyyy-MM-dd").format(e.getDate()));
             pst.setString(6, f.getText());
             pst.setString(7, h.getSelectedItem().toString());
-            pst.setString(8, g.getText());            
+            pst.setString(8, g.getText());
             pst.executeUpdate();
         } catch (SQLException i) {
             System.out.println(i);
@@ -553,8 +553,8 @@ public class classFunction {
         }
     }
 
-    public static void comboSelectedSpesial(String a, String b, 
-            String c, String d, JComboBox e, JTextField f, 
+    public static void comboSelectedSpesial(String a, String b,
+            String c, String d, JComboBox e, JTextField f,
             JComboBox g) {
         try {
             SQL = "select " + a + ", " + b + " from " + c + " where " + d + " = '" + e.getSelectedItem().toString() + "'";
@@ -616,5 +616,58 @@ public class classFunction {
             System.out.println(e);
             Throwable cause = e.getCause();
         }
+    }
+
+    public static void checkboxOneSelection(JComboBox report, JCheckBox jan, JCheckBox feb, JCheckBox mar, JCheckBox apr, JCheckBox mei, JCheckBox jun, JCheckBox jul, JCheckBox agu, JCheckBox sep, JCheckBox okt, JCheckBox nov, JCheckBox des) {
+        switch (report.getSelectedIndex()) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                if (jan.isSelected()) {
+                    feb.setSelected(false);
+                    mar.setSelected(false);
+                    apr.setSelected(false);
+                    mei.setSelected(false);
+                    jun.setSelected(false);
+                    jul.setSelected(false);
+                    agu.setSelected(false);
+                    sep.setSelected(false);
+                    okt.setSelected(false);
+                    nov.setSelected(false);
+                    des.setSelected(false);
+                } else {
+
+                }
+                break;
+        }
+    }
+    public static boolean cb1;
+    public static boolean cb2;
+    public static boolean cb3;
+    public static boolean cb4;
+    public static boolean cb5;
+    public static boolean cb6;
+    public static boolean cb7;
+    public static boolean cb8;
+    public static boolean cb9;
+    public static boolean cb10;
+    public static boolean cb11;
+    public static boolean cb12;
+
+    public static void checkboxesSelectedSelectedState(JCheckBox a, JCheckBox b, JCheckBox c, JCheckBox d, JCheckBox e, JCheckBox f, JCheckBox g, JCheckBox h, JCheckBox i, JCheckBox j, JCheckBox k, JCheckBox l) {
+        cb1 = a.isSelected();
+        cb2 = b.isSelected();
+        cb3 = c.isSelected();
+        cb4 = d.isSelected();
+        cb5 = e.isSelected();
+        cb6 = f.isSelected();
+        cb7 = g.isSelected();
+        cb8 = h.isSelected();
+        cb9 = i.isSelected();
+        cb10 = j.isSelected();
+        cb11 = k.isSelected();
+        cb12 = l.isSelected();
     }
 }

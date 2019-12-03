@@ -13,9 +13,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -33,19 +35,7 @@ public final class Admin extends javax.swing.JFrame {
     //String namaAdmin;
     public Admin(String nama) {
         initComponents();
-        cb10 = cbOktober.isSelected();
-        cb9 = cbSeptember.isSelected();
-        cb8 = cbAgustus.isSelected();
-        cb7 = cbJuli.isSelected();
-        cb6 = cbJuni.isSelected();
-        cb5 = cbMei.isSelected();
-        cb4 = cbApril.isSelected();
-        cb3 = cbMaret.isSelected();
-        cb2 = cbFebruari.isSelected();
-        cb11 = cbNovember.isSelected();
-        cb12 = cbDesember.isSelected();
-        cb1 = cbJanuari.isSelected();
-
+        classFunction.checkboxesSelectedSelectedState(cbJanuari, cbFebruari, cbMaret, cbApril, cbMei, cbJuni, cbJuli, cbAgustus, cbSeptember, cbOktober, cbNovember, cbDesember);
         lbWelcome.setText("Selamat Datang, " + nama + " !");
         lbnama.setText(nama);
         logo_.setText("");
@@ -204,19 +194,9 @@ public final class Admin extends javax.swing.JFrame {
         System.out.println();
         query = n;
     }
+
     String query;
-    public boolean cb1;
-    public boolean cb2;
-    public boolean cb3;
-    public boolean cb4;
-    public boolean cb5;
-    public boolean cb6;
-    public boolean cb7;
-    public boolean cb8;
-    public boolean cb9;
-    public boolean cb10;
-    public boolean cb11;
-    public boolean cb12;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -738,6 +718,11 @@ public final class Admin extends javax.swing.JFrame {
         cbJuni.setText("Juni");
         cbJuni.setOpaque(false);
         cbJuni.setRequestFocusEnabled(false);
+        cbJuni.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbJuniItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbJuni, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, -1, -1));
 
         cbJanuari.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -755,60 +740,110 @@ public final class Admin extends javax.swing.JFrame {
         cbFebruari.setText("Februari");
         cbFebruari.setOpaque(false);
         cbFebruari.setRequestFocusEnabled(false);
+        cbFebruari.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbFebruariItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbFebruari, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, -1, -1));
 
         cbMaret.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbMaret.setText("Maret");
         cbMaret.setOpaque(false);
         cbMaret.setRequestFocusEnabled(false);
+        cbMaret.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbMaretItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbMaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, -1, -1));
 
         cbApril.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbApril.setText("April");
         cbApril.setOpaque(false);
         cbApril.setRequestFocusEnabled(false);
+        cbApril.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbAprilItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbApril, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, -1, -1));
 
         cbMei.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbMei.setText("Mei");
         cbMei.setOpaque(false);
         cbMei.setRequestFocusEnabled(false);
+        cbMei.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbMeiItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbMei, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, -1, -1));
 
         cbDesember.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbDesember.setText("Desember");
         cbDesember.setOpaque(false);
         cbDesember.setRequestFocusEnabled(false);
+        cbDesember.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbDesemberItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbDesember, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, -1, -1));
 
         cbNovember.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbNovember.setText("November");
         cbNovember.setOpaque(false);
         cbNovember.setRequestFocusEnabled(false);
+        cbNovember.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbNovemberItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbNovember, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, -1, -1));
 
         cbOktober.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbOktober.setText("Oktober");
         cbOktober.setOpaque(false);
         cbOktober.setRequestFocusEnabled(false);
+        cbOktober.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbOktoberItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbOktober, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, -1, -1));
 
         cbSeptember.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbSeptember.setText("September");
         cbSeptember.setOpaque(false);
         cbSeptember.setRequestFocusEnabled(false);
+        cbSeptember.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbSeptemberItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbSeptember, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, -1, -1));
 
         cbAgustus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbAgustus.setText("Agustus");
         cbAgustus.setOpaque(false);
         cbAgustus.setRequestFocusEnabled(false);
+        cbAgustus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbAgustusItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbAgustus, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, -1, -1));
 
         cbJuli.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbJuli.setText("Juli");
         cbJuli.setOpaque(false);
         cbJuli.setRequestFocusEnabled(false);
+        cbJuli.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbJuliItemStateChanged(evt);
+            }
+        });
         jPanel5.add(cbJuli, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, -1, -1));
 
         jTabbedPane1.addTab("Laporan", jPanel5);
@@ -972,7 +1007,7 @@ public final class Admin extends javax.swing.JFrame {
     private void btReportCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReportCetakActionPerformed
         checkboxStatArray();
         System.out.println(query);
-        if (cb1 == false || cb2 == false || cb3 == false || cb4 == false || cb5 == false || cb6 == false || cb7 == false || cb8 == false || cb9 == false || cb10 == false || cb11 == false || cb12 == false) {
+        if (classFunction.cb1 == false || classFunction.cb2 == false || classFunction.cb3 == false || classFunction.cb4 == false || classFunction.cb5 == false || classFunction.cb6 == false || classFunction.cb7 == false || classFunction.cb8 == false || classFunction.cb9 == false || classFunction.cb10 == false || classFunction.cb11 == false || classFunction.cb12 == false) {
             //JOptionPane.showMessageDialog(null, "Bulan Sudah Dipilih", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
             switch (cbReportSelect.getSelectedIndex()) {
                 case 0:
@@ -986,12 +1021,11 @@ public final class Admin extends javax.swing.JFrame {
                     }
                     break;
                 case 2:
-                String bulanan = cbJanuari.getText() + " " + cbReportTahun.getSelectedItem().toString();
-                if (cbReportTahun.getSelectedIndex() == 0) {
-                    JOptionPane.showMessageDialog(this, "Silahkan Pilih Data Laporan Yang Akan Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    classFunction.reportingBulanan(query, cbReportTahun);
-                }
+                    if (cbReportTahun.getSelectedIndex() == 0) {
+                        JOptionPane.showMessageDialog(this, "Silahkan Pilih Data Laporan Yang Akan Dicetak", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        classFunction.reportingBulanan(query, cbReportTahun);
+                    }
             }
         } else {
             JOptionPane.showMessageDialog(null, "Bulan Belum Dipilih", "Kesalahan", JOptionPane.WARNING_MESSAGE);
@@ -1161,21 +1195,33 @@ public final class Admin extends javax.swing.JFrame {
         switch (cbReportSelect.getSelectedIndex()) {
             case 0:
                 cbReportIDKaryawan.setEnabled(false);
+                cbReportIDKaryawan.setSelectedIndex(0);
                 disableBulanCheckbox();
+                deselectBulanCheckbox();
                 cbReportTahun.setEnabled(false);
+                cbReportTahun.setSelectedIndex(0);
                 txtReportNama.setEnabled(false);
+                txtReportNama.setText("");
                 break;
             case 1:
                 cbReportIDKaryawan.setEnabled(true);
+                cbReportIDKaryawan.setSelectedIndex(0);
                 enableBulanCheckbox();
+                deselectBulanCheckbox();
                 cbReportTahun.setEnabled(true);
+                cbReportTahun.setSelectedIndex(0);
                 txtReportNama.setEnabled(true);
+                txtReportNama.setText("");
                 break;
             case 2:
                 cbReportIDKaryawan.setEnabled(false);
+                cbReportIDKaryawan.setSelectedIndex(0);
                 enableBulanCheckbox();
+                deselectBulanCheckbox();
                 cbReportTahun.setEnabled(true);
+                cbReportTahun.setSelectedIndex(0);
                 txtReportNama.setEnabled(false);
+                txtReportNama.setText("");
                 break;
         }
     }//GEN-LAST:event_cbReportSelectItemStateChanged
@@ -1203,10 +1249,52 @@ public final class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbJanuariItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbJanuariItemStateChanged
-//        switch(cbJanuari.gets){
-//            
-//        }
+        classFunction.checkboxOneSelection(cbReportSelect, cbJanuari, cbFebruari, cbMaret, cbApril, cbMei, cbJuni, cbJuli, cbAgustus, cbSeptember, cbOktober, cbNovember, cbDesember);
     }//GEN-LAST:event_cbJanuariItemStateChanged
+
+    private void cbFebruariItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbFebruariItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbFebruari, cbJanuari, cbMaret, cbApril, cbMei, cbJuni, cbJuli, cbAgustus, cbSeptember, cbOktober, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbFebruariItemStateChanged
+
+    private void cbMaretItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbMaretItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbMaret, cbFebruari, cbJanuari, cbApril, cbMei, cbJuni, cbJuli, cbAgustus, cbSeptember, cbOktober, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbMaretItemStateChanged
+
+    private void cbAprilItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAprilItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbApril, cbFebruari, cbMaret, cbJanuari, cbMei, cbJuni, cbJuli, cbAgustus, cbSeptember, cbOktober, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbAprilItemStateChanged
+
+    private void cbMeiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbMeiItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbMei, cbFebruari, cbMaret, cbApril, cbJanuari, cbJuni, cbJuli, cbAgustus, cbSeptember, cbOktober, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbMeiItemStateChanged
+
+    private void cbJuniItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbJuniItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbJuni, cbFebruari, cbMaret, cbApril, cbMei, cbJanuari, cbJuli, cbAgustus, cbSeptember, cbOktober, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbJuniItemStateChanged
+
+    private void cbJuliItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbJuliItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbJuli, cbFebruari, cbMaret, cbApril, cbMei, cbJuni, cbJanuari, cbAgustus, cbSeptember, cbOktober, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbJuliItemStateChanged
+
+    private void cbAgustusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbAgustusItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbAgustus, cbFebruari, cbMaret, cbApril, cbMei, cbJuni, cbJuli, cbJanuari, cbSeptember, cbOktober, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbAgustusItemStateChanged
+
+    private void cbSeptemberItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbSeptemberItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbSeptember, cbFebruari, cbMaret, cbApril, cbMei, cbJuni, cbJuli, cbAgustus, cbJanuari, cbOktober, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbSeptemberItemStateChanged
+
+    private void cbOktoberItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbOktoberItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbOktober, cbFebruari, cbMaret, cbApril, cbMei, cbJuni, cbJuli, cbAgustus, cbSeptember, cbJanuari, cbNovember, cbDesember);
+    }//GEN-LAST:event_cbOktoberItemStateChanged
+
+    private void cbNovemberItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNovemberItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbNovember, cbFebruari, cbMaret, cbApril, cbMei, cbJuni, cbJuli, cbAgustus, cbSeptember, cbOktober, cbJanuari, cbDesember);
+    }//GEN-LAST:event_cbNovemberItemStateChanged
+
+    private void cbDesemberItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbDesemberItemStateChanged
+        classFunction.checkboxOneSelection(cbReportSelect, cbDesember, cbFebruari, cbMaret, cbApril, cbMei, cbJuni, cbJuli, cbAgustus, cbSeptember, cbOktober, cbNovember, cbJanuari);
+    }//GEN-LAST:event_cbDesemberItemStateChanged
 
     /**
      * @param args the command line arguments
